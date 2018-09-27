@@ -3,12 +3,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-     <section class="mb-5">
+          <form action="#" method="get" class="probootstrap-search-form mb-sm-0 mb-3">
+            <div class="form-group">
+            </div>
+          </form>
+
+  <section class="mb-5">
     <div class="container">
       <div class="row">
         <div class="col-md-6 mb-5">
           <h1 class="display-4">Contate-nos</h1>
-          <p class="lead text-secondary">Precisa de ajuda?  <a href="" target="_blank">Fale conosco!</a></p>
+          <p class="lead text-secondary">Precisa de ajuda? <a href="" target="_blank">Fale conosco já!</a></p>
+
         </div>
       </div>
     </div>
@@ -41,15 +47,16 @@
               <form action="" method="post" class="probootstrap-form">
                 <div class="form-group">
                   <label for="name" class="sr-only">Name</label>
-                  <asp:textbox runat="server" class="form-control" id="name" type="text" placeholder="Enter your name"></asp:textbox>
+                  <asp:textbox runat="server" class="form-control" id="txt_NomeContato" type="text" placeholder="Digite seu nome"></asp:textbox>
                 </div>
                 <div class="form-group">
                   <label for="email" class="sr-only">Email</label>
-                  <input type="text" class="form-control" id="email" placeholder="Enter your email">
+                   <asp:textbox runat="server" class="form-control" id="txt_EmailContato" type="text" placeholder="Digite seu e-mail"></asp:textbox>
+
                 </div>
                 <div class="form-group">
                   <label for="message" class="sr-only">Message</label>
-                  <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Write your message"></textarea>
+                  <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Digite sua mensagem"></textarea>
                 </div>
                 <div class="form-group">
                   <input type="submit" class="btn btn-primary" value="Enviar Mensagem">
@@ -87,8 +94,8 @@
       </form>
     </div>
   </section>
-    
-    <footer class="probootstrap-footer">
+
+  <footer class="probootstrap-footer">
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-3">
@@ -112,7 +119,7 @@
           </ul>
         </div>
         <div class="col-md-3">
-          <h3 class="heading">Follow us</h3>
+          <h3 class="heading">Siga-nos</h3>
           <ul class="list-unstyled probootstrap-footer-links">
             <li><a href="https://twitter.com/jaohenrii">João Henri</a></li>
             <li><a href="https://twitter.com/NicholasPatapo1">Nicholas Patapoff</a></li>
@@ -124,4 +131,17 @@
 
     </div>
   </footer>
+
+  <!-- loader -->
+    
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
 </asp:Content>
