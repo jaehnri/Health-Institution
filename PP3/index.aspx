@@ -1,50 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="PP3.Index" %>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <!--CSS Bootstrap-->
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <style>
-        body
-        {
-    background-size: contain;
-    background-repeat: no-repeat !important;
-        }        
-
-        </style>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark probootstrap-navbar-dark" style="padding:0;">
-    <div class="container" style="padding: 0; margin: 0; max-width: unset;">
-      <!-- <a class="navbar-brand" href="index.html">Health</a> -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-nav" aria-controls="probootstrap-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="probootstrap-nav">
-        <ul class="navbar-nav m-auto" style="margin-top: 0;">
-          <li class="nav-item active"><a href="index.aspx" class="nav-link pl-0">Home</a></li>
-          <li class="nav-item"><a href="medico.aspx" class="nav-link">Médico</a></li>
-          <li class="nav-item"><a href="secretaria.aspx" class="nav-link">Secretário</a></li>
-          <li class="nav-item"><a href="paciente.aspx" class="nav-link">Paciente</a></li>
-        </ul>
-        <div class="ml-auto">
-          <form action="#" method="get" class="probootstrap-search-form mb-sm-0 mb-3">
-            <div class="form-group">
-              <button class="icon submit"><span class="icon-magnifying-glass"></span></button>
-              <input type="text" class="form-control" placeholder="Pesquisar">
-            </div>
-          </form>
-        </div>
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a href="LoginSelec.aspx" class="nav-link">Entrar</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-   </br>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="PP3.index1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
     </br>
     <section class="probootstrap-features-1">
     <div class="container">
@@ -232,14 +190,4 @@
 
     </div>
   </footer>
-    <form id="form1" runat="server">
-          <div>
-
-          </div>
-         </form>
-         <!--Jquery-->
-        <script src="js/jquery.min.js"></script>
-         <!--JavaScript Bootstrap-->
-        <script src="js/bootstrap.js"></script>
-   </body>
-   </html>
+</asp:Content>

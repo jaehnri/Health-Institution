@@ -72,7 +72,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\ajax-loader.gif" />
+    <Content Include="css\animate.css" />
     <Content Include="css\bootstrap-grid.css.map" />
+    <Content Include="css\flaticon.css" />
+    <Content Include="css\icomoon.css" />
+    <Content Include="css\open-iconic-bootstrap.min.css" />
+    <Content Include="css\owl.carousel.min.css" />
+    <Content Include="css\owl.theme.default.min.css" />
     <Content Include="imagens\consulta1.jpg" />
     <Content Include="imagens\consulta2.jpg" />
     <Content Include="imagens\consulta3.jpg" />
@@ -84,9 +91,12 @@
     <Content Include="imagens\médica2.jpg" />
     <Content Include="imagens\médico.jpg" />
     <Content Include="imagens\médico2.jpg" />
+    <Content Include="index.aspx" />
     <Content Include="Login.Master" />
+    <Content Include="css\.DS_Store" />
     <None Include="packages.config" />
     <Content Include="medico.aspx" />
+    <Content Include="secretaria.aspx" />
     <Content Include="Site.Master" />
     <Content Include="u\secretario\CadastroSelec.aspx" />
     <Content Include="u\secretario\index.aspx" />
@@ -109,14 +119,11 @@
     <Content Include="imagens\Koala.jpg" />
     <Content Include="imagens\Penguins.jpg" />
     <Content Include="imagens\wallpaper.jpg" />
-    <Content Include="index.aspx" />
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\jquery.min.js" />
-    <Content Include="l.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="LoginSelec.aspx" />
-    <Content Include="m.aspx" />
     <Content Include="u\medico\foimedico.aspx" />
     <Content Include="u\paciente\foipaciente.aspx" />
     <Content Include="u\secretario\cadastro.aspx" />
@@ -133,13 +140,6 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="l.aspx.cs">
-      <DependentUpon>l.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="l.aspx.designer.cs">
-      <DependentUpon>l.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -162,13 +162,6 @@
     <Compile Include="loginselec.aspx.designer.cs">
       <DependentUpon>LoginSelec.aspx</DependentUpon>
     </Compile>
-    <Compile Include="m.aspx.cs">
-      <DependentUpon>m.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="m.aspx.designer.cs">
-      <DependentUpon>m.aspx</DependentUpon>
-    </Compile>
     <Compile Include="medico.aspx.cs">
       <DependentUpon>medico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -177,6 +170,13 @@
       <DependentUpon>medico.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="secretaria.aspx.cs">
+      <DependentUpon>secretaria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secretaria.aspx.designer.cs">
+      <DependentUpon>secretaria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
