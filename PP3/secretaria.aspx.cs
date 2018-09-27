@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace PP3
 {
-    public partial class m : System.Web.UI.Page
+    public partial class secretaria : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

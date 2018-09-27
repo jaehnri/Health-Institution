@@ -23,7 +23,7 @@
         <ul class="navbar-nav m-auto" style="margin-top: 0;">
           <li class="nav-item active"><a href="index.aspx" class="nav-link pl-0">Home</a></li>
           <li class="nav-item"><a href="medico.aspx" class="nav-link">Médico</a></li>
-          <li class="nav-item"><a href="secretaria.aspx" class="nav-link">Secretário</a></li>
+          <li class="nav-item"><a href="secretaria.aspx" class="nav-link">Secretaria</a></li>
           <li class="nav-item"><a href="paciente.aspx" class="nav-link">Paciente</a></li>
         </ul>
         <div class="ml-auto">
