@@ -39,11 +39,11 @@
           <div class="mb-3">
             <h2 class="h6">Sessões</h2>
             <ul class="list-unstyled probootstrap-light mb-4">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Médico</a></li>
-              <li><a href="#">Paciente</a></li>
-              <li><a href="#">Secretaria</a></li>
-              <li><a href="#">Entrar</a></li>
+              <li><a href="index.aspx">Home</a></li>
+              <li><a href="medico.aspx">Médico</a></li>
+              <li><a href="paciente.aspx">Paciente</a></li>
+              <li><a href="secretaria.aspx">Secretaria</a></li>
+              <li><a href="LoginSelec.aspx">Entrar</a></li>
             </ul>
             <p><a href="#" class="arrow-link text-white">HEALTH INSTITUTION  <i class="icon-chevron-right"></i></a></p>
           </div>
@@ -149,7 +149,7 @@
     <div class="row mb-5">
         <div class="col-md-12 text-center">
           <div class="row justify-content-center mb-5">
-            <div class="col-md-3"><a href="#" class="btn btn-secondary btn-block">Junte-se a nós</a></div>
+            <div class="col-md-3"><a href="LoginSelec.aspx" class="btn btn-secondary btn-block">Junte-se a nós</a></div>
           </div>
         </div>
       </div>

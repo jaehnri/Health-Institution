@@ -23,7 +23,8 @@
           <div class="mb-3 pt-5">
             <h2 class="h6">Departments</h2>
             <ul class="list-unstyled probootstrap-light mb-4">
-              <li class="active"><a href="#">Cardiologia</a></li>
+              <li class="active"><a href="">Especialidades</a></li>
+              <li><a href="LoginSelec.aspx">Cardiologia</a></li>
               <li><a href="LoginSelec.aspx">Acupuntura</a></li>
               <li><a href="LoginSelec.aspx">Quimioterapia</a></li>
               <li><a href="LoginSelec.aspx">Cirurgia Geral</a></li>
@@ -37,7 +38,7 @@
               <li><a href="LoginSelec.aspx">Ortopedia e Traumatologia</a></li>
               <li><a href="LoginSelec.aspx">Radiologia </a></li>
               <li><a href="LoginSelec.aspx">Urologia</a></li>
-                <li><a href="LoginSelec.aspx">Reumatologia</a></li>
+              <li><a href="LoginSelec.aspx">Reumatologia</a></li>
 
             </ul>
           </div>
@@ -99,7 +100,7 @@
           </ul>
         </div>
         <div class="col-md-3">
-          <h3 class="heading">Follow us</h3>
+          <h3 class="heading">Siga-nos</h3>
           <ul class="list-unstyled probootstrap-footer-links">
             <li><a href="https://twitter.com/jaohenrii">João Henri</a></li>
             <li><a href="https://twitter.com/NicholasPatapo1">Nicholas Patapoff</a></li>

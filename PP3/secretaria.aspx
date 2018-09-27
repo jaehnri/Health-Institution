@@ -87,7 +87,7 @@
             <input type="text" class="form-control" placeholder="Email">
           </div>
           <div class="col-md-4">
-            <input type="submit" value="Subscribe" class="btn btn-primary btn-block">
+            <input type="submit" value="Inscrever-se" class="btn btn-primary btn-block">
           </div>
         
         </div>
