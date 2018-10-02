@@ -11,7 +11,13 @@ namespace PP3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+               
+        }
 
+        protected void lbl_Paciente_Click(object sender, EventArgs e)
+        {
+          //  Session["funcao"] = "paciente";
+           // Response.Redirect("login.aspx");
         }
     }
 }

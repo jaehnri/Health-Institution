@@ -13,7 +13,10 @@ namespace PP3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session.IsNewSession)
+            {
+                Session["funcao"] = "paciente";
+            }
         }
 
         protected void txt_Login_TextChanged(object sender, EventArgs e)
