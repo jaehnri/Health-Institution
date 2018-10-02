@@ -39,7 +39,7 @@ namespace PP3.u.secretario
             PP3ConexaoBD insertBD = new PP3ConexaoBD();
             insertBD.Connection(conString);           
             insertBD.AbrirConexao();
-            string insert = "Insert into consulta values ("+ ddl_MedicoConsulta.SelectedIndex + ", "+ ddl_Paciente.SelectedIndex + ", " + ddl_Exame.SelectedIndex + ", " + 1 + ", " + cal_data.SelectedDate + ", " + txt_hora.Text + " )";
+            string insert = "Insert into consulta values ( "+ ddl_Medico.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", " + ddl_Exame.SelectedValue + ", " + "1" + ", '" + cal_data.SelectedDate.ToString() + "', '" + txt_hora.Text + "' )";
             insertBD.ExecutaInsUpDel(insert);    
         }
 

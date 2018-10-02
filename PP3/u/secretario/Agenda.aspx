@@ -57,6 +57,30 @@
     &nbsp;
     
    
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlConsulta" ForeColor="#333333" GridLines="None">
+        <AlternatingRowStyle BackColor="White" />
+        <Columns>
+            <asp:BoundField DataField="hora" HeaderText="hora" SortExpression="hora" />
+            <asp:BoundField DataField="nome" HeaderText="nome" SortExpression="nome" />
+        </Columns>
+        <EditRowStyle BackColor="#2461BF" />
+        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#EFF3FB" />
+        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+    </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="Select c.hora, p.nome  from  consulta as c, paciente as p where c.idMedico  = @idMedico and p.idPaciente = c.idPaciente">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ddl_Medico" Name="idMedico" PropertyName="SelectedValue" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    
+   
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:SqlDataSource ID="SqlConsulta" runat="server"></asp:SqlDataSource>
     <br/>
