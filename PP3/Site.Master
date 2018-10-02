@@ -24,7 +24,7 @@
           <li class="nav-item active"><a href="index.aspx" class="nav-link pl-0">Home</a></li>
           <li class="nav-item"><a href="medico.aspx" class="nav-link">Médico</a></li>
           <li class="nav-item"><a href="secretaria.aspx" class="nav-link">Secretaria</a></li>
-          <li class="nav-item"><a href="login.aspx" class="nav-link">Paciente</a></li>
+          <li class="nav-item"><a href="LoginSelec.aspx" class="nav-link">Paciente</a></li>
         </ul>
         <div class="ml-auto">
           <form action="#" method="get" class="probootstrap-search-form mb-sm-0 mb-3">
@@ -40,12 +40,12 @@
       </div>
     </div>
   </nav>
-   </br>
+
     <form id="form1" runat="server">
-        <div>
+        
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
+        
     </form>
 </body>
 </html>
