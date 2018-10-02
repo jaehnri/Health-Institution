@@ -86,11 +86,14 @@
     <Content Include="imagens\criancamedico.jpg" />
     <Content Include="imagens\criancamedico2.jpg" />
     <Content Include="imagens\crianca.jpeg" />
+    <Content Include="imagens\doctor.jpg" />
+    <Content Include="imagens\healthcaring.png" />
     <Content Include="imagens\medico-crianca.png" />
     <Content Include="imagens\médica.jpg" />
     <Content Include="imagens\médica2.jpg" />
     <Content Include="imagens\médico.jpg" />
     <Content Include="imagens\médico2.jpg" />
+    <Content Include="imagens\office.jpg" />
     <Content Include="index.aspx" />
     <Content Include="Login.Master" />
     <Content Include="css\.DS_Store" />
