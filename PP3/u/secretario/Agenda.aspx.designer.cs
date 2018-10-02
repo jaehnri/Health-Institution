@@ -67,6 +67,15 @@ namespace PP3.u.secretario {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlPacientes;
         
         /// <summary>
+        /// Controle SqlExames.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlExames;
+        
+        /// <summary>
         /// Controle ddl_MedicoConsulta.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,24 @@ namespace PP3.u.secretario {
         protected global::System.Web.UI.WebControls.DropDownList ddl_Paciente;
         
         /// <summary>
+        /// Controle ddl_Exame.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Exame;
+        
+        /// <summary>
+        /// Controle txt_hora.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_hora;
+        
+        /// <summary>
         /// Controle UpdatePanel1.
         /// </summary>
         /// <remarks>
@@ -101,5 +128,14 @@ namespace PP3.u.secretario {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Calendar cal_data;
+        
+        /// <summary>
+        /// Controle btn_MarcarConsulta.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_MarcarConsulta;
     }
 }

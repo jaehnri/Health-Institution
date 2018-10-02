@@ -1,10 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/u/secretario/secretario.Master" AutoEventWireup="true" CodeBehind="Agenda.aspx.cs" Inherits="PP3.u.secretario.Agenda" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            height: 30px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
    
-    <table style="width:100%;">
+    <table class="table-primary table-striped" style ="width : 80%;">
+        <thead class="thead-dark">
         <tr >         
            <th colspan="2">
                <asp:Label ID="lbl_Medico" runat="server" Text="Label"></asp:Label>
@@ -18,47 +24,58 @@
                 Paciente
             </th>
         </tr>
+        </thead>
+        <tbody class="thead-light">
         <tr>
-            <td></td>
+            <td>9h00</td>
             <td></td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
+            <td>9h30</td>
             <td></td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
+            <td>10h00</td>
             <td></td>
         </tr>
         <tr>
-            <td></td>
+            <td class="auto-style1">10h30</td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>11h00</td>
             <td></td>
         </tr>
+        <tr>
+            <td>11h30</td>
+            <td></td>
+        </tr>
+        </tbody>
     </table>
+    
+   
+    &nbsp;
     
    
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:SqlDataSource ID="SqlConsulta" runat="server"></asp:SqlDataSource>
     <br/>
-    <asp:DropDownList ID="ddl_Medico" runat="server" DataSourceID="SqlMedicos" DataTextField="nome" DataValueField="idMedico" ></asp:DropDownList>
+    <asp:DropDownList ID="ddl_Medico" runat="server" DataSourceID="SqlMedicos" DataTextField="nome" DataValueField="idMedico" OnSelectedIndexChanged="ddl_Medico_SelectedIndexChanged" ></asp:DropDownList>
     <asp:SqlDataSource ID="SqlMedicos" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT [idMedico], [nome] FROM [Medico]"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlPacientes" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT [idPaciente], [nome] FROM [Paciente]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlPacientes" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT [idPaciente], [nome] FROM [Paciente]" ></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlExames" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="Select e.nome, e.idExame from Exame as e , Medico as m where e.idEspecialidade = m.idEspecialidade and m.idMedico = @idMedico">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ddl_MedicoConsulta" DefaultValue="2" Name="idMedico" PropertyName="SelectedValue" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <br/>
     <br/>
 
     <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Marcar Consulta
-</button>
+  Marcar Consulta</button>
 
+    
     
     
 <!-- Modal -->
@@ -88,10 +105,24 @@
                 </div>
             </div>
           <br/>
+            <div class="row">
+                Exame:  
+                <div class="col-md-2 mb-md-0 mb-3">
+                    <asp:DropDownList ID="ddl_Exame" runat="server" DataSourceID="SqlExames" DataTextField="nome" DataValueField="idExame" Width="190px"></asp:DropDownList>         
+                </div>
+            </div>
+          <br/>
+                <div class="row">
+                Hora:  
+                <div class="col-md-2 mb-md-0 mb-3">
+                   <asp:TextBox ID="txt_hora" runat="server" TextMode="Time"></asp:TextBox> 
+                </div>
+            </div>
+          <br/>
          </center>
           
               
-            
+              
           
         <div class="row">
           Data:
@@ -110,6 +141,8 @@
             </asp:Calendar>
         </ContentTemplate>
     </asp:UpdatePanel>
+
+
             </div>
     </div>
               
@@ -119,7 +152,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Marcar</button>
+         <asp:button runat="server" text="Marcar" class="btn btn-secondary" type=" button" ID="btn_MarcarConsulta" OnClick="btn_MarcarConsulta_Click"/>
       </div>
     </div>
   </div>
