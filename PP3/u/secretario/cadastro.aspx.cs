@@ -18,6 +18,8 @@ namespace PP3.u.secretario
         {
             if (Session["cadastro"] == null)
                 Response.Redirect("CadastroSelec.aspx");
+            if (Session["cadastro"].Equals("medico"))
+                ddl_Especialidades.Visible = true;
         }
 
         protected Boolean CadastrarUsuario()
@@ -28,11 +30,11 @@ namespace PP3.u.secretario
                 return false;
             }
 
-            if (!(Regex.IsMatch(txt_Nome.Text, @"^[a-zA-Z]+$")))
+          /*  if (!(Regex.IsMatch(txt_Nome.Text, @"^[a-zA-Z]+$")))
             {
                 lbl_Alerta.Text = "O Nome deve conter apenas letras!";
                 return false;
-            }
+            }*/
 
             if (EmailExiste(txt_Email.Text))
             {
@@ -55,12 +57,12 @@ namespace PP3.u.secretario
 
             if (Session["cadastro"].ToString() == "medico")
             {
-                cadastro = "insert into medico values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + "', 0)";
+                cadastro = "insert into medico values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + "' ,"+ ddl_Especialidades.SelectedValue +")";
             }
 
             if (Session["cadastro"].ToString() == "paciente")
             {
-                cadastro = "insert into paciente values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + "', 0)";
+                cadastro = "insert into paciente values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + ")";
             }
 
 
@@ -74,7 +76,7 @@ namespace PP3.u.secretario
         }
 
         protected bool EmailExiste(string email)
-        {           
+        {               
             String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
 
             PP3ConexaoBD acessoBD = new PP3ConexaoBD();

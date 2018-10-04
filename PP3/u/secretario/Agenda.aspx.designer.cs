@@ -94,6 +94,15 @@ namespace PP3.u.secretario {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlExames;
         
         /// <summary>
+        /// Controle UpdatePanel2.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        
+        /// <summary>
         /// Controle ddl_MedicoConsulta.
         /// </summary>
         /// <remarks>
@@ -128,15 +137,6 @@ namespace PP3.u.secretario {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_hora;
-        
-        /// <summary>
-        /// Controle UpdatePanel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// Controle cal_data.

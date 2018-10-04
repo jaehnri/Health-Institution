@@ -19,7 +19,10 @@ namespace PP3.u.secretario
             
             if (!Page.IsPostBack)
                 cal_data.SelectedDate = DateTime.Now.Date;
-            lbl_Medico.Text = ddl_Medico.Text;
+            
+            if (ddl_Medico.SelectedIndex != -1) {
+                lbl_Medico.Text = ddl_Medico.Items[ddl_Medico.SelectedIndex].Text;
+            }
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,7 +48,13 @@ namespace PP3.u.secretario
 
         protected void ddl_Medico_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbl_Medico.Text = ddl_Medico.Text;
+           
+                
+        }
+
+        protected void ddl_Medico_TextChanged(object sender, EventArgs e)
+        {
+            lbl_Medico.Text = ddl_Medico.Items[ddl_Medico.SelectedIndex].Text;
         }
     }
 }

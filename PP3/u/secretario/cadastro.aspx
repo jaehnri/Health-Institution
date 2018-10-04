@@ -23,11 +23,18 @@
                 </div>
                 <div class="col-md-4">
                     <asp:TextBox ID="txt_Telefone" runat="server" CssClass="form-control" placeholder="Telefone" TextMode="Number" MaxLength="11"></asp:TextBox>
+                    <br />
+                </div>
+                <div class="col-md-4">
+                <asp:DropDownList ID="ddl_Especialidades" runat="server" Visible="False" DataSourceID="SqlEspecialidade" DataTextField="nome" DataValueField="idEspecialidade"></asp:DropDownList>
+                         
+                    <asp:SqlDataSource ID="SqlEspecialidade" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT * FROM [Especialidade]"></asp:SqlDataSource>
+                         
                 </div>
                 <br />
                 <asp:Label ID="lbl_Alerta" runat="server" Font-Size="30pt" Text=""></asp:Label>
                 <br />
-
+                
                 <div class="col-md-4">
             <asp:Button ID="btn_Cadastrar" runat="server" Text="Cadastrar" CssClass="btn btn-primary btn-block" OnClick="btn_Cadastrar_Click" />
         </div>
