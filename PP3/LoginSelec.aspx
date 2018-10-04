@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <section  class="probootstrap-section overlay bg-image" style="height: 33% !important; background-image: url(imagens/healthcaring.png)">
     <div class="container">
       <div class="row">
@@ -27,7 +27,8 @@
             <br>
           <div class="row justify-content-center mb-5">
             <div class="col-md-4">
-            <asp:Button ID="btnLogar_Secretario" runat="server" Text="Entrar como Secretário" CssClass="btn btn-secondary btn-block" BackColor="#3333CC" OnClick="btnLogar_Secretario_Click" />
+                <button style="background-color: #3333CC;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModalSecretario">
+            Entrar Como Administrador</button>
             </div>
           </div>
         </div>
@@ -43,13 +44,15 @@
             <br>
           <div class="row justify-content-center mb-5">
             <div class="col-md-4">
-            <asp:Button ID="btnLogar_Medico" runat="server" Text="Entrar como Médico" CssClass="btn btn-secondary btn-block" BackColor="#000066" OnClick="btnLogar_Medico_Click" />
+            <button style="background-color: #000066;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModalMedico">
+            Entrar Como Médico</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+         
 
     <footer class="probootstrap-footer">
     <div class="container">
@@ -88,11 +91,45 @@
 
     </div>
   </footer>
-   <!-- <script>
-        $(document).ready(function () {
-            $("div[id$=probootstrap-loader]").fadeOut("fast");
-        }
-</script> 
-    <div id="probootstrap-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#32609e"/></svg></div>
--->
+    
+<!-- Modal -->
+<div class="modal fade" id="exampleModalMedico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate>
+      <div class="modal-header">
+          <h5 class="modal-title"><asp:Label ID="lbl_Titulo" runat="server" Text="Entrar como Médico"></asp:Label></h5>         
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <center>
+     <form action="#" method="get" class="probootstrap-search-form mb-sm-0 mb-3">
+       <div class="form-group">
+       </div>
+     </form>
+
+     <form method="post" class="probootstrap-form">
+       <div class="form-group">
+           <asp:textbox runat="server" class="form-control" id="txt_NomeMedico" type="text" placeholder="Seu Nome"></asp:textbox>
+       </div>
+       
+         <div class="form-group">
+          <asp:textbox runat="server" class="form-control" id="txt_Senha" type="text" placeholder="Sua Senha"></asp:textbox>
+         </div>
+     </center>
+      </div>
+        <center>
+      <div class="modal-footer">
+           <asp:Button ID="btn_Logar" CssClass="btn btn-secondary"  runat="server" Text="LOGAR" OnClick="btn_Logar_Click" UseSubmitBehavior="False"></asp:Button>         
+      </div>
+       
+        </center>
+               </ContentTemplate>
+          </asp:UpdatePanel>
+    </div>
+  </div>
+</div>
+ 
 </asp:Content>
