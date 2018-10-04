@@ -101,6 +101,7 @@
     <Content Include="medico.aspx" />
     <Content Include="secretaria.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="u\secretario\Agenda.aspx" />
     <Content Include="u\secretario\CadastroSelec.aspx" />
     <Content Include="u\secretario\index.aspx" />
     <Content Include="u\secretario\secretario.Master" />
@@ -200,6 +201,13 @@
     </Compile>
     <Compile Include="u\paciente\foipaciente.aspx.designer.cs">
       <DependentUpon>foipaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="u\secretario\Agenda.aspx.cs">
+      <DependentUpon>Agenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="u\secretario\Agenda.aspx.designer.cs">
+      <DependentUpon>Agenda.aspx</DependentUpon>
     </Compile>
     <Compile Include="u\secretario\cadastro.aspx.cs">
       <DependentUpon>cadastro.aspx</DependentUpon>
