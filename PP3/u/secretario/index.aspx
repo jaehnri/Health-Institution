@@ -41,20 +41,17 @@
           <h2 class="h1 text-white">Make an Appointment</h2>
           <form action="#" class="probootstrap-form-appointment">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Seu Nome">
+              <asp:TextBox ID="txt_Email" runat="server" CssClass="form-control" placeholder="Email..."></asp:TextBox>
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="Seu Email">
+              <asp:TextBox ID="txt_Assunto" runat="server" placeholder="Assunto..." CssClass ="form-control"></asp:TextBox>
             </div>
             <div class="form-group">
-              <span class="icon"><i class="icon-calendar"></i></span>
-              <input type="text" id="probootstrap-date" class="form-control" placeholder="Date">
+              <!--<textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Write your message"></textarea>-->
+                <asp:TextBox ID="txt_Mensagem" CssClass="form-control" runat="server"  TextMode="MultiLine"  placeholder="Escreva sua mensagem" style="height: 300px !important;"></asp:TextBox>
             </div>
             <div class="form-group">
-              <textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Submit Form" class="btn btn-secondary">
+              <asp:Button ID="btn_Enviar" runat="server" Text="Enviar" cssClass="btn btn-secondary" OnClick="btn_Enviar_Click"/>
             </div>
           </form>
         </div>

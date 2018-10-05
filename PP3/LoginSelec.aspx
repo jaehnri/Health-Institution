@@ -27,8 +27,9 @@
             <br>
           <div class="row justify-content-center mb-5">
             <div class="col-md-4">
-                <button style="background-color: #3333CC;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModalSecretario">
-            Entrar Como Administrador</button>
+                <asp:Button ID="btnLogar_Secretario" runat="server" Text="Entrar como Administrador" CssClass="btn btn-primary btn-block" BackColor="#00235e" OnClick="btnLogar_Secretario_Click" />
+                <!--<button style="background-color: #3333CC;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModalSecretario">
+            Entrar Como Administrador</button>-->
             </div>
           </div>
         </div>
