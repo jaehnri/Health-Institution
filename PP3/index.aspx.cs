@@ -11,7 +11,17 @@ namespace PP3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Session.IsNewSession)
+            {
+                if (Session["funcao"].ToString().Equals("medico"))
+                    Response.Redirect("u/medico/index.aspx");
 
+                if (Session["funcao"].ToString().Equals("paciente"))
+                    Response.Redirect("u/paciente/index.aspx");
+
+                if (Session["funcao"].ToString().Equals("secretario"))
+                    Response.Redirect("u/secretario/index.aspx");
+            }
         }
     }
 }

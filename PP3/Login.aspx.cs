@@ -1,132 +1,171 @@
-﻿using System;
+﻿using PP3.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using PP3.App_Start;
-using System.Web.Configuration;
 
 namespace PP3
 {
-    public partial class Login1 : System.Web.UI.Page
+    public partial class LoginSelec : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.IsNewSession)
+            
+        }
+
+        protected void btn_LogarMedico_Click(object sender, EventArgs e)
+        {
+            String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
+
+            // instanciar a classe conexaoBD
+            PP3ConexaoBD acessoBD = new PP3ConexaoBD();
+            acessoBD.Connection(conString);
+            acessoBD.AbrirConexao();
+
+
+            // checar se o usuario digitou dados para o LOGIN e SENHA
+            if ((txt_NomeMedico.Text == "") || (txt_SenhaMedico.Text == ""))
             {
+                lbl_Titulo.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lbl_Titulo.Text = "Preencha todos os campos! Tente novamente!";
+                acessoBD.FecharConexao();
+                return;
+            }
+
+            String sqlAcesso = "select * from Medico where nome='" + txt_NomeMedico.Text + "'";
+
+            int achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
+            if (achouReg <= 0)
+            {
+                lbl_Titulo.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lbl_Titulo.Text = "Usuário não encontrado.";
+                return;
+            }            
+                
+            sqlAcesso = "select * from Medico where nome='" + txt_NomeMedico.Text + "' and senha='" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_SenhaMedico.Text) + "'";
+            achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
+            if (achouReg <= 0)
+            {
+                lbl_Titulo.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lbl_Titulo.Text = "Senha incorreta. Por favor, digite novamente";
+                return;
+            }
+            
+            {
+                // criando variavel de sessao
+                Session["username"] = txt_NomeMedico.Text;
+                Session["funcao"] = "medico";
+                // redirecionar para outra pagina
+                // Response.Redirect("proximaPagina.aspx");
+                Response.Redirect("u/medico/foimedico.aspx");
+            }
+            acessoBD.FecharConexao();
+        }
+
+        protected void btn_LogarPaciente_Click(object sender, EventArgs e)
+        {
+            String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
+
+            // instanciar a classe conexaoBD
+            PP3ConexaoBD acessoBD = new PP3ConexaoBD();
+            acessoBD.Connection(conString);
+            acessoBD.AbrirConexao();
+
+
+            // checar se o usuario digitou dados para o LOGIN e SENHA
+            if ((txt_NomePaciente.Text == "") || (txt_SenhaPaciente.Text == ""))
+            {
+                lblTituloPaciente.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lblTituloPaciente.Text = "Preencha todos os campos! Tente novamente!";
+                acessoBD.FecharConexao();
+                return;
+            }
+
+            String sqlAcesso = "select * from Paciente where nome='" + txt_NomePaciente.Text + "'";
+
+            int achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
+            if (achouReg <= 0)
+            {
+                lblTituloPaciente.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lblTituloPaciente.Text = "Usuário não encontrado.";
+                return;
+            }
+
+            sqlAcesso = "select * from Paciente where nome='" + txt_NomePaciente.Text + "' and senha='" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_SenhaPaciente.Text) + "'";
+            achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
+            if (achouReg <= 0)
+            {
+                lblTituloPaciente.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lblTituloPaciente.Text = "Senha incorreta. Por favor, digite novamente";
+                return;
+            }
+
+            {
+                // criando variavel de sessao
+                Session["username"] = txt_NomePaciente.Text;
                 Session["funcao"] = "paciente";
+                // redirecionar para outra pagina
+                // Response.Redirect("proximaPagina.aspx");
+                Response.Redirect("u/paciente/foipaciente.aspx");
             }
+            acessoBD.FecharConexao();
         }
 
-        protected void txt_Login_TextChanged(object sender, EventArgs e)
+        protected void txt_NomeMedico_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        public static string Base64Encode(string plainText)
+        protected void btn_EntrarADM_Click(object sender, EventArgs e)
         {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
-        }
+            String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
 
-        protected void btnLogar_Click(object sender, EventArgs e)
-        {
+            // instanciar a classe conexaoBD
+            PP3ConexaoBD acessoBD = new PP3ConexaoBD();
+            acessoBD.Connection(conString);
+            acessoBD.AbrirConexao();
+
+
+            // checar se o usuario digitou dados para o LOGIN e SENHA
+            if ((txt_NomeADM.Text == "") || (txt_SenhaADM.Text == ""))
             {
-                String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
-
-                // instanciar a classe conexaoBD
-                PP3ConexaoBD acessoBD = new PP3ConexaoBD();
-                acessoBD.Connection(conString);
-                acessoBD.AbrirConexao();
-
-                // checar se o usuario digitou dados para o LOGIN e SENHA
-                if ((txt_Login.Text == "") || (txt_SenhaUsuario.Text == ""))
-                {
-                    lb_mensagem.Visible = true;
-                    lb_mensagem.Attributes["style"] = "color:orange;font-weight:bold;font-size:18px;";
-                    lb_mensagem.Text = "Preencher TODOS os campos!";
-                    txt_Login.Text = "";
-                    txt_SenhaUsuario.Text = "";
-                }
-                else
-                {
-                    // consultando no BD se existe o LOGIN e SENHA digitados
-                    if (Session["funcao"].Equals("paciente"))
-                    {
-                        String sqlAcesso = "select * from Paciente where nome='" + txt_Login.Text + "' and senha='" + Base64Encode(txt_SenhaUsuario.Text) + "'";
-                        int achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
-                        if (achouReg <= 0)
-                        {
-                            lb_mensagem.Visible = true;
-                            lb_mensagem.Attributes["style"] = "color:orange;font-weight:bold;font-size:18px;";
-                            lb_mensagem.Text = "ACESSO NEGADO! Vc nao tem CADASTRO!";
-                        }
-                        else
-                        {
-                            // criando variavel de sessao
-                            Session["username"] = txt_Login.Text;
-                            lb_mensagem.Visible = true;
-                            lb_mensagem.Attributes["style"] = "color:orange;font-weight:bold;font-size:18px;";
-                            lb_mensagem.Text = "ACESSO LIBERADO!";
-                            
-                            // redirecionar para outra pagina
-                            // Response.Redirect("proximaPagina.aspx");
-                            Response.Redirect("u/paciente/foipaciente.aspx");
-                        }
-                        acessoBD.FecharConexao();
-                    }
-
-                    else
-                    if (Session["funcao"].Equals("medico"))
-                    {
-                        String sqlAcesso = "select * from Medico where nome='" + txt_Login.Text + "' and senha='" + txt_SenhaUsuario.Text + "'";
-                        int achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
-                        if (achouReg <= 0)
-                        {
-                            lb_mensagem.Visible = true;
-                            lb_mensagem.Attributes["style"] = "color:orange;font-weight:bold;font-size:18px;";
-                            lb_mensagem.Text = "ACESSO NEGADO! Vc nao tem CADASTRO!";
-                        }
-                        else
-                        {
-                            // criando variavel de sessao
-                            Session["username"] = txt_Login.Text;
-                            lb_mensagem.Visible = true;
-                            lb_mensagem.Attributes["style"] = "color:orange;font-weight:bold;font-size:18px;";
-                            lb_mensagem.Text = "ACESSO LIBERADO!";
-      
-                            // redirecionar para outra pagina
-                            // Response.Redirect("proximaPagina.aspx");
-                            Response.Redirect("u/medico/foimedico.aspx");
-                        }
-                        acessoBD.FecharConexao();
-                    }
-                    if (Session["funcao"].Equals("secretario"))
-                    {
-                        String sqlAcesso = "select * from secretaria where nome='" + txt_Login.Text + "' and senha='" + Base64Encode(txt_SenhaUsuario.Text) + "'";
-                        int achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
-                        if (achouReg <= 0)
-                        {
-                            lb_mensagem.Visible = true;
-                            lb_mensagem.Attributes["style"] = "color:orange;font-weight:bold;font-size:18px;";
-                            lb_mensagem.Text = "ACESSO NEGADO! Vc nao tem CADASTRO!";
-                        }
-                        else
-                        {
-                            // criando variavel de sessao
-                            Session["username"] = txt_Login.Text;
-                            lb_mensagem.Visible = true;
-                            lb_mensagem.Attributes["style"] = "color:orange;font-weight:bold;font-size:18px;";
-                            lb_mensagem.Text = "ACESSO LIBERADO!";
-                            // redirecionar para outra pagina
-                            // Response.Redirect("proximaPagina.aspx");
-                            Response.Redirect("u/secretario/index.aspx");
-                        }
-                        acessoBD.FecharConexao();
-                    }
-                }
+                lblTituloADM.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lblTituloADM.Text = "Preencha todos os campos!";
+                acessoBD.FecharConexao();
+                return;
             }
+
+            String sqlAcesso = "select * from Secretaria where nome='" + txt_NomeADM.Text + "'";
+
+            int achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
+            if (achouReg <= 0)
+            {
+                lblTituloADM.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lblTituloADM.Text = "Usuário não encontrado.";
+                return;
+            }
+
+            sqlAcesso = "select * from Secretaria where nome='" + txt_NomeADM.Text + "' and senha='" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_SenhaADM.Text) + "'";
+            achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
+            if (achouReg <= 0)
+            {
+                lblTituloADM.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lblTituloADM.Text = "Senha incorreta. Por favor, digite novamente";
+                return;
+            }
+
+            {
+                // criando variavel de sessao
+                Session["username"] = txt_NomeADM.Text;
+                Session["funcao"] = "secretario";
+                // redirecionar para outra pagina
+                // Response.Redirect("proximaPagina.aspx");
+                Response.Redirect("u/secretario/index.aspx");
+            }
+            acessoBD.FecharConexao();
         }
     }
 }

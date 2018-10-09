@@ -30,6 +30,12 @@ namespace PP3.App_Start
             this.ConnectionString = ConnectString;
         }
 
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
         // métodos de criação da conexao e acesso ao BD
         public void AbrirConexao()
         {

@@ -24,21 +24,21 @@
             <h2 class="h6">Departments</h2>
             <ul class="list-unstyled probootstrap-light mb-4">
               <li class="active"><a href="">Especialidades</a></li>
-              <li><a href="LoginSelec.aspx">Cardiologia</a></li>
-              <li><a href="LoginSelec.aspx">Acupuntura</a></li>
-              <li><a href="LoginSelec.aspx">Quimioterapia</a></li>
-              <li><a href="LoginSelec.aspx">Cirurgia Geral</a></li>
-              <li><a href="LoginSelec.aspx">Dermatologia</a></li>
-              <li><a href="LoginSelec.aspx">Endoscopia</a></li>
-              <li><a href="LoginSelec.aspx">Geriatria</a></li>
-              <li><a href="LoginSelec.aspx">Infectologia</a></li>
-              <li><a href="LoginSelec.aspx">Medicina do Trabalho</a></li>
-              <li><a href="LoginSelec.aspx">Otorrinolaringologia</a></li>
-              <li><a href="LoginSelec.aspx">Psiquiatria</a></li>
-              <li><a href="LoginSelec.aspx">Ortopedia e Traumatologia</a></li>
-              <li><a href="LoginSelec.aspx">Radiologia </a></li>
-              <li><a href="LoginSelec.aspx">Urologia</a></li>
-              <li><a href="LoginSelec.aspx">Reumatologia</a></li>
+              <li><a href="Login.aspx">Cardiologia</a></li>
+              <li><a href="Login.aspx">Acupuntura</a></li>
+              <li><a href="Login.aspx">Quimioterapia</a></li>
+              <li><a href="Login.aspx">Cirurgia Geral</a></li>
+              <li><a href="Login.aspx">Dermatologia</a></li>
+              <li><a href="Login.aspx">Endoscopia</a></li>
+              <li><a href="Login.aspx">Geriatria</a></li>
+              <li><a href="Login.aspx">Infectologia</a></li>
+              <li><a href="Login.aspx">Medicina do Trabalho</a></li>
+              <li><a href="Login.aspx">Otorrinolaringologia</a></li>
+              <li><a href="Login.aspx">Psiquiatria</a></li>
+              <li><a href="Login.aspx">Ortopedia e Traumatologia</a></li>
+              <li><a href="Login.aspx">Radiologia </a></li>
+              <li><a href="Login.aspx">Urologia</a></li>
+              <li><a href="Login.aspx">Reumatologia</a></li>
 
             </ul>
           </div>
@@ -68,7 +68,7 @@
           <h2 class="text-white display-4">Especialistas em Cuidado Familiar</h2>
             <br />
           <div class="row justify-content-center mb-5">
-            <div class="col-md-4"><a href="LoginSelec.aspx"  class="btn btn-secondary btn-block">Marcar uma consulta <span class="icon-arrow-right"></span></a></div>
+            <div class="col-md-4"><a href="Login.aspx"  class="btn btn-secondary btn-block">Marcar uma consulta <span class="icon-arrow-right"></span></a></div>
 
           </div>
         </div>
@@ -96,7 +96,7 @@
             <li><a href="medico.aspx">Médico</a></li>
             <li><a href="paciente.aspx">Paciente</a></li>
             <li><a href="secretaria.aspx">Secretaria</a></li>
-            <li><a href="LoginSelec.aspx">Entrar</a></li>
+            <li><a href="Login.aspx">Entrar</a></li>
           </ul>
         </div>
         <div class="col-md-3">

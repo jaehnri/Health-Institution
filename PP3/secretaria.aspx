@@ -115,7 +115,7 @@
             <li><a href="medico.aspx">Médico</a></li>
             <li><a href="paciente.aspx">Paciente</a></li>
             <li><a href="secretaria.aspx">Secretaria</a></li>
-            <li><a href="LoginSelec.aspx">Entrar</a></li>
+            <li><a href="Login.aspx">Entrar</a></li>
           </ul>
         </div>
         <div class="col-md-3">
