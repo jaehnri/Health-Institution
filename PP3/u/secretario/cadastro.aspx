@@ -26,7 +26,7 @@
                     <br />
                 </div>
                 <div class="col-md-4">
-                <asp:DropDownList ID="ddl_Especialidades" runat="server" Visible="False" DataSourceID="SqlEspecialidade" DataTextField="nome" DataValueField="idEspecialidade"></asp:DropDownList>
+                <asp:DropDownList ID="ddl_Especialidades" runat="server" Visible="False" DataSourceID="SqlEspecialidade" DataTextField="nome" DataValueField="idEspecialidade" CssClass ="form-control" BackColor="#33CCFF"></asp:DropDownList>
                          
                     <asp:SqlDataSource ID="SqlEspecialidade" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT * FROM [Especialidade]"></asp:SqlDataSource>
                          
