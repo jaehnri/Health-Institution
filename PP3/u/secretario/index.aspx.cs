@@ -42,9 +42,9 @@ namespace PP3.u.secretario
 
                 //recipient address
                 mail.To.Add(new MailAddress(txt_Email.Text));
-                mail.IsBodyHtml = false;
-                objMail.Subject = txt_Assunto.Text;
-                objMail.Body = txt_Mensagem.Text;
+                mail.IsBodyHtml = true;
+                mail.Subject = txt_Assunto.Text;
+                mail.Body = txt_Mensagem.Text;
                 //Formatted mail body
                 
                 //string st = "Test";

@@ -32,7 +32,7 @@
           <div class="row justify-content-center mb-5">
             <div class="col-md-4">
                 <button style="background-color: #3333CC;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModalSecretaria">
-                Entrar como Administrador</button>
+                Entrar como ADM</button>
             </div>
           </div>
         </div>
