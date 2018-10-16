@@ -38,11 +38,13 @@ namespace PP3.u.secretario
         protected void btn_MarcarConsulta_Click(object sender, EventArgs e)
         {
             String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
-
+            string dataHora = cal_data.SelectedDate.ToString();
+            dataHora = dataHora.Substring(0, 11);
+            dataHora += txt_hora.Text+":00";
             PP3ConexaoBD insertBD = new PP3ConexaoBD();
             insertBD.Connection(conString);           
             insertBD.AbrirConexao();
-            string insert = "Insert into consulta values ( "+ ddl_Medico.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", " + ddl_Exame.SelectedValue + ", " + "1" + ", '" + cal_data.SelectedDate.ToString() + "', '" + txt_hora.Text + "' )";
+            string insert = "Insert into consulta values ( "+ ddl_Medico.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", " + ddl_Exame.SelectedValue + ", " + "1" + ", '" + dataHora +"')";
             insertBD.ExecutaInsUpDel(insert);    
         }
 

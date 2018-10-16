@@ -89,9 +89,21 @@ Begin
 Select e.nome as Exame, m.nome as Médico, p.nome as Paciente, p.email as Email , c.data as Data, c.hora as Hora from medico as m, exame as e, paciente as p, consulta as c where c.data>=GETDATE() and c.data <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico and c.idExame = e.idExame
 End
 
+create proc Consultas @idMedico int
+As
+BEGIN
+ select p.nome as Paciente, c.data as Data, e.nome as Exame from consulta as c, paciente as p, exame as e where c.idMedico = @idMedico and p.idPaciente = c.idPaciente and e.idExame = c.idExame
+END
+
+create proc ConsultasNomeMedico @nomeMedico varchar(30)
+As
+BEGIN
+ select p.nome as Paciente, c.data as Data, e.nome as Exame from medico as m, consulta as c, paciente as p, exame as e where c.idMedico = m.idMedico and m.nome = @nomeMedico and p.idPaciente = c.idPaciente and e.idExame = c.idExame
+END
+2018-10-17 
 exec proxConsultas
 
-
+select * from consulta
 drop table consulta 
 drop table paciente
 drop table medico 

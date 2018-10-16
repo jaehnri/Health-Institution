@@ -72,5 +72,11 @@ namespace PP3.u.secretario
                 lbl_mensagem.Visible = true;*/
             }
         }
+
+        protected void grd_ConsultasProximas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string cellValue = grd_ConsultasProximas.Rows[grd_ConsultasProximas.SelectedRow.RowIndex].Cells[3].Text;
+
+        }
     }
 }
