@@ -23,22 +23,35 @@
     <div class="container">
       <div class="row no-gutters">
         <div class="col-md-6 pr-md-5 pr-0 pt-md-5 pt-0 pb-md-5 pb-0">
-          <h2 class="h1 mb-4 text-white">Recent Blog</h2>
-          <ul class="probootstrap-blog-list list-unstyled">
-            <li>
-              <h2><span class="date">November 15, 2017</span><a href="#">The practice of medicine is a lot like parenting </a></h2>
-            </li>
-            <li>
-              <h2><span class="date">November 15, 2017</span><a href="#">Physicians: Want to overcome burnout? Start studying business. </a></h2>
-            </li>
-            <li>
-              <h2><span class="date">November 15, 2017</span><a href="#">Want a simple and easy-to-use EMR? Well, you can have it for free. </a></h2>
-            </li>
-          </ul>
-          <p><a href="#" class="arrow-link">View All  <i class="icon-chevron-right"></i></a></p>
+          <h2 class="h1 mb-4 text-white">Consultas Próximas:</h2>
+            <div class="row">
+            <asp:GridView ID="grd_ConsultasProximas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlProxConsultas" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:BoundField DataField="Exame" HeaderText="Exame                        " SortExpression="Exame" />
+                    <asp:BoundField DataField="Médico" HeaderText="Médico" SortExpression="Médico" />
+                    <asp:BoundField DataField="Paciente" HeaderText="Paciente" SortExpression="Paciente" />
+                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                    <asp:BoundField DataField="Data" HeaderText="Data" SortExpression="Data" />
+                    <asp:BoundField DataField="Hora" HeaderText="Hora" SortExpression="Hora" />
+                </Columns>
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlProxConsultas" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="exec proxConsultas"></asp:SqlDataSource>
+            </div>
+          <p><a href="#" class="arrow-link">View All <i class="icon-chevron-right"></i></a></p>
         </div>
         <div class="col-md-6 p-md-5 p-3 probootstrap-aside-stretch-right">
-          <h2 class="h1 text-white">Make an Appointment</h2>
+          <h2 class="h1 text-white">Enviar Email</h2>
           <form action="#" class="probootstrap-form-appointment">
             <div class="form-group">
               <asp:TextBox ID="txt_Email" runat="server" CssClass="form-control" placeholder="Email..."></asp:TextBox>

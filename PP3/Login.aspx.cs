@@ -60,7 +60,7 @@ namespace PP3
                 Session["funcao"] = "medico";
                 // redirecionar para outra pagina
                 // Response.Redirect("proximaPagina.aspx");
-                Response.Redirect("u/medico/foimedico.aspx");
+                Response.Redirect("u/medico/index.aspx");
             }
             acessoBD.FecharConexao();
         }
