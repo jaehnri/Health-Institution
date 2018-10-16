@@ -101,10 +101,15 @@
     <Content Include="medico.aspx" />
     <Content Include="secretaria.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="u\medico\agenda.aspx" />
+    <Content Include="u\medico\consulta.aspx" />
+    <Content Include="u\medico\graficos.aspx" />
+    <Content Include="u\medico\index.aspx" />
     <Content Include="u\secretario\Agenda.aspx" />
     <Content Include="u\secretario\CadastroSelec.aspx" />
     <Content Include="u\secretario\index.aspx" />
     <Content Include="u\secretario\secretario.Master" />
+    <Content Include="u\medico\Medico.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -127,8 +132,6 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="Login.aspx" />
-    <Content Include="LoginSelec.aspx" />
-    <Content Include="u\medico\foimedico.aspx" />
     <Content Include="u\paciente\foipaciente.aspx" />
     <Content Include="u\secretario\cadastro.aspx" />
     <Content Include="Web.config" />
@@ -159,13 +162,6 @@
     <Compile Include="Login.Master.designer.cs">
       <DependentUpon>Login.Master</DependentUpon>
     </Compile>
-    <Compile Include="loginselec.aspx.cs">
-      <DependentUpon>LoginSelec.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="loginselec.aspx.designer.cs">
-      <DependentUpon>LoginSelec.aspx</DependentUpon>
-    </Compile>
     <Compile Include="medico.aspx.cs">
       <DependentUpon>medico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -188,12 +184,35 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="u\medico\foimedico.aspx.cs">
-      <DependentUpon>foimedico.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="u\medico\agenda.aspx.cs">
+      <DependentUpon>agenda.aspx</DependentUpon>
     </Compile>
-    <Compile Include="u\medico\foimedico.aspx.designer.cs">
-      <DependentUpon>foimedico.aspx</DependentUpon>
+    <Compile Include="u\medico\agenda.aspx.designer.cs">
+      <DependentUpon>agenda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="u\medico\consulta.aspx.cs">
+      <DependentUpon>consulta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="u\medico\consulta.aspx.designer.cs">
+      <DependentUpon>consulta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="u\medico\graficos.aspx.cs">
+      <DependentUpon>graficos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="u\medico\graficos.aspx.designer.cs">
+      <DependentUpon>graficos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="u\medico\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="u\medico\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="u\medico\Medico.Master.cs">
+      <DependentUpon>Medico.Master</DependentUpon>
+    </Compile>
+    <Compile Include="u\medico\Medico.Master.designer.cs">
+      <DependentUpon>Medico.Master</DependentUpon>
     </Compile>
     <Compile Include="u\paciente\foipaciente.aspx.cs">
       <DependentUpon>foipaciente.aspx</DependentUpon>
