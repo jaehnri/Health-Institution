@@ -47,6 +47,7 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
+
             <asp:SqlDataSource ID="SqlProxConsultas" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="exec proxConsultas"></asp:SqlDataSource>
             </div>
           <p><a href="#" class="arrow-link">View All <i class="icon-chevron-right"></i></a></p>
