@@ -36,8 +36,7 @@ create table Consulta
 	Constraint FK_idPaciente foreign key (idPaciente) references Paciente(idPaciente),
 	Constraint FK_idExame foreign key (idExame) references Exame(idExame),
 	Constraint FK_idDiagnostico foreign key (idDiagnostico) references Diagnostico(idDiagnostico),
-	data datetime not null
-	
+	dataHora datetime not null
 )
 
 create table Exame
@@ -86,24 +85,31 @@ DECLARE @data datetime
 SELECT @data = DATEADD(day, 2, GETDATE()) 
 
 Begin
-Select e.nome as Exame, m.nome as Médico, p.nome as Paciente, p.email as Email , c.data as Data, c.hora as Hora from medico as m, exame as e, paciente as p, consulta as c where c.data>=GETDATE() and c.data <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico and c.idExame = e.idExame
+Select e.nome as Exame, m.nome as Médico, p.nome as Paciente, p.email as Email , c.dataHora as Data from medico as m, exame as e, paciente as p, consulta as c where c.dataHora>=GETDATE() and c.dataHora <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico and c.idExame = e.idExame
 End
 
 create proc Consultas @idMedico int
 As
 BEGIN
- select p.nome as Paciente, c.data as Data, e.nome as Exame from consulta as c, paciente as p, exame as e where c.idMedico = @idMedico and p.idPaciente = c.idPaciente and e.idExame = c.idExame
+ select p.nome as Paciente, c.dataHora as Data, e.nome as Exame from consulta as c, paciente as p, exame as e where c.idMedico = @idMedico and p.idPaciente = c.idPaciente and e.idExame = c.idExame
 END
 
 create proc ConsultasNomeMedico @nomeMedico varchar(30)
 As
 BEGIN
- select p.nome as Paciente, c.data as Data, e.nome as Exame from medico as m, consulta as c, paciente as p, exame as e where c.idMedico = m.idMedico and m.nome = @nomeMedico and p.idPaciente = c.idPaciente and e.idExame = c.idExame
+ select p.nome as Paciente, c.dataHora as Data, e.nome as Exame from medico as m, consulta as c, paciente as p, exame as e where c.idMedico = m.idMedico and m.nome = @nomeMedico and p.idPaciente = c.idPaciente and e.idExame = c.idExame
 END
-2018-10-17 
-exec proxConsultas
 
-select * from consulta
+exec ConsultasNomeMedico 'Marina Carrenho'
+select * from Consulta
+select * from exame
+insert into Especialidade values ('Pediatra')
+insert into Especialidade values ('Urologista')
+insert into Especialidade values ('Ginecologia')
+
+
+select * from Especialidade
+select * from Medico
 drop table consulta 
 drop table paciente
 drop table medico 
