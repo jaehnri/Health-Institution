@@ -1,67 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/u/secretario/secretario.Master" AutoEventWireup="true" CodeBehind="Agenda.aspx.cs" Inherits="PP3.u.secretario.Agenda" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .auto-style1 {
-            height: 30px;
-        }
-    </style>
-</asp:Content>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
+
    
-    <table class="table-primary table-striped" style ="width : 80%;">
-        <thead class="thead-dark">
-        <tr >         
-           <th colspan="2">
-               <asp:Label ID="lbl_Medico" runat="server" Text="Label"></asp:Label>
-           </th>
-        </tr>
-        <tr>
-           <th>
-               Horário
-           </th>
-            <th>
-                Paciente
-            </th>
-        </tr>
-        </thead>
-        <tbody class="thead-light">
-        <tr>
-            <td>9h00</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>9h30</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>10h00</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class="auto-style1">10h30</td>
-            <td class="auto-style1"></td>
-        </tr>
-        <tr>
-            <td>11h00</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>11h30</td>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
+   
+    <asp:DropDownList ID="ddl_MedicoAgenda" runat="server" DataSourceID="SqlMedicos" DataTextField="nome" DataValueField="idMedico" OnSelectedIndexChanged="ddl_Medico_SelectedIndexChanged" AutoPostBack="True" OnTextChanged="ddl_Medico_TextChanged" ></asp:DropDownList>
+    <asp:SqlDataSource ID="SqlAgenda" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="exec agenda @idMedico">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ddl_MedicoAgenda" Name="idMedico" PropertyName="SelectedValue" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+   
     
    
-    &nbsp;
-    
-   
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlConsulta" ForeColor="#333333" GridLines="None">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:SqlDataSource ID="SqlConsulta" runat="server"></asp:SqlDataSource>
+    <br/>
+    <asp:SqlDataSource ID="SqlMedicos" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT [idMedico], [nome] FROM [Medico]"></asp:SqlDataSource>
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlAgenda" ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="hora" HeaderText="hora" SortExpression="hora" />
-            <asp:BoundField DataField="nome" HeaderText="nome" SortExpression="nome" />
+            <asp:BoundField DataField="DataHora" HeaderText="Hora" SortExpression="DataHora" />
+            <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -74,18 +36,6 @@
         <SortedDescendingCellStyle BackColor="#E9EBEF" />
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
     </asp:GridView>
-    &nbsp;<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="Select c.hora, p.nome  from  consulta as c, paciente as p where c.idMedico  = @idMedico and p.idPaciente = c.idPaciente">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="ddl_Medico" Name="idMedico" PropertyName="SelectedValue" />
-        </SelectParameters>
-    </asp:SqlDataSource>
-    
-   
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:SqlDataSource ID="SqlConsulta" runat="server"></asp:SqlDataSource>
-    <br/>
-    <asp:DropDownList ID="ddl_Medico" runat="server" DataSourceID="SqlMedicos" DataTextField="nome" DataValueField="idMedico" OnSelectedIndexChanged="ddl_Medico_SelectedIndexChanged" AutoPostBack="True" OnTextChanged="ddl_Medico_TextChanged" ></asp:DropDownList>
-    <asp:SqlDataSource ID="SqlMedicos" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT [idMedico], [nome] FROM [Medico]"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlPacientes" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT [idPaciente], [nome] FROM [Paciente]" ></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlExames" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="Select e.nome, e.idExame from Exame as e , Medico as m where e.idEspecialidade = m.idEspecialidade and m.idMedico = @idMedico">
         <SelectParameters>
@@ -123,7 +73,7 @@
                      Médico: 
                 <div class="col-md-4 mb-md-0 mb-3">
                     
-                 <asp:DropDownList ID="ddl_MedicoConsulta" runat="server" DataSourceID="SqlMedicos" DataTextField="nome" DataValueField="idMedico" Width="200px" AutoPostBack="True"></asp:DropDownList>
+                  <asp:DropDownList ID="ddl_MedicoConsulta" runat="server" DataSourceID="SqlMedicos" DataTextField="nome" DataValueField="idMedico" Width="200px" AutoPostBack="True"></asp:DropDownList>
                     
                 </div>
             </div>

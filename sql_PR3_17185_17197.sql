@@ -32,11 +32,15 @@ create table Consulta
 	idPaciente int not null,
 	idExame int not null,
 	idDiagnostico int not null,
+	dataHora datetime not null,
+	duracao varchar(5) not null,
+	statusConsulta varchar(10) not null,
 	Constraint FK_idMedico foreign key (idMedico) references Medico(idMedico),
 	Constraint FK_idPaciente foreign key (idPaciente) references Paciente(idPaciente),
 	Constraint FK_idExame foreign key (idExame) references Exame(idExame),
 	Constraint FK_idDiagnostico foreign key (idDiagnostico) references Diagnostico(idDiagnostico),
-	dataHora datetime not null
+	                                                                             
+
 )
 
 create table Exame
@@ -62,16 +66,6 @@ create table Secretaria
 	telefone varchar(11) not null
 )
 
-/*create table Agenda
-(
-	idMedico int not null,
-	idConsulta int not null,
-	idPaciente int not null,
-	Constraint FK_idMedico foreign key (idMedico) references Medico(idMedico),
-	Constraint FK_idPaciente foreign key (idPaciente) references Paciente(idPaciente),
-	Constraint FK_idConsulta foreign key (idConsulta) references Consulta(idConsulta)
-) */
-
 create table Especialidade
 (
 	idEspecialidade int identity (1,1) primary key,
@@ -81,35 +75,51 @@ create table Especialidade
 create proc proxConsultas 
 As
 
-DECLARE @data datetime
-SELECT @data = DATEADD(day, 2, GETDATE()) 
-
-Begin
-Select e.nome as Exame, m.nome as Médico, p.nome as Paciente, p.email as Email , c.dataHora as Data from medico as m, exame as e, paciente as p, consulta as c where c.dataHora>=GETDATE() and c.dataHora <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico and c.idExame = e.idExame
-End
-
-create proc Consultas @idMedico int
-As
+	DECLARE @data datetime
+	SELECT @data = DATEADD(day, 2, GETDATE())
+	 
 BEGIN
- select p.nome as Paciente, c.dataHora as Data, e.nome as Exame from consulta as c, paciente as p, exame as e where c.idMedico = @idMedico and p.idPaciente = c.idPaciente and e.idExame = c.idExame
-END
 
+	Select e.nome as Exame, m.nome as Médico, p.nome as Paciente, p.email as Email , c.dataHora as Data from medico as m, exame as e, paciente as p, consulta as c where c.dataHora>=GETDATE() and c.dataHora <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico and c.idExame = e.idExame
+
+END
 create proc ConsultasNomeMedico @nomeMedico varchar(30)
 As
 BEGIN
+
  select p.nome as Paciente, c.dataHora as Data, e.nome as Exame from medico as m, consulta as c, paciente as p, exame as e where c.idMedico = m.idMedico and m.nome = @nomeMedico and p.idPaciente = c.idPaciente and e.idExame = c.idExame
+
 END
 
-exec ConsultasNomeMedico 'Marina Carrenho'
+create proc agenda @idMedico int
+as
+BEGIN
+	select c.dataHora as DataHora, p.nome as Nome from consulta as c, paciente as p, medico as m where c.idMedico = @idMedico and m.idMedico = c.idMedico and c.idPaciente = p.idPaciente
+END
+
+create proc agendar int @idMedico, int @idPaciente, int @idExame, int
+
 select * from Consulta
-select * from exame
+select * from paciente
+select * from Especialidade
+select * from Medico
+select * from Exame
+
+
 insert into Especialidade values ('Pediatra')
 insert into Especialidade values ('Urologista')
 insert into Especialidade values ('Ginecologia')
 
+insert into Exame values(4, 'Exame de geriatra')
 
-select * from Especialidade
-select * from Medico
+insert into especialidade values ('Psiquiatra')
+insert into especialidade values ('Cardiologista')
+insert into especialidade values ('Dermatologista')
+insert into especialidade values ('Geriatra')
+insert into especialidade values ('Otorrinolaringologista')
+insert into especialidade values ('Reumatologista')
+insert into especialidade values ('Ortopedista')
+
 drop table consulta 
 drop table paciente
 drop table medico 
@@ -120,11 +130,8 @@ drop table agenda
 drop table diagnostico
 drop table exame
 
-insert into especialidade values ('Psiquiatra')
-insert into especialidade values ('Cardiologista')
-insert into especialidade values ('Dermatologista')
-insert into especialidade values ('Geriatra')
-insert into especialidade values ('Otorrinolaringologista')
-insert into especialidade values ('Reumatologista')
-insert into especialidade values ('Ortopedista')
+
+
+
+
 

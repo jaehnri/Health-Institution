@@ -16,12 +16,15 @@ namespace PP3.u.secretario
         DateTime data;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!Page.IsPostBack)
+            {
                 cal_data.SelectedDate = DateTime.Now.Date;
+                
+            }
             
-            if (ddl_Medico.SelectedIndex != -1) {
-                lbl_Medico.Text = ddl_Medico.Items[ddl_Medico.SelectedIndex].Text;
+            if (ddl_MedicoAgenda.SelectedIndex != -1) {
+                //lbl_Medico.Text = ddl_Medico.Items[ddl_Medico.SelectedIndex].Text;
             }
         }
 
@@ -44,7 +47,7 @@ namespace PP3.u.secretario
             PP3ConexaoBD insertBD = new PP3ConexaoBD();
             insertBD.Connection(conString);           
             insertBD.AbrirConexao();
-            string insert = "Insert into consulta values ( "+ ddl_Medico.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", " + ddl_Exame.SelectedValue + ", " + "1" + ", '" + dataHora +"')";
+            string insert = "Insert into consulta values ( "+ ddl_MedicoConsulta.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", " + ddl_Exame.SelectedValue + ", " + "1" + ", '" + dataHora +"')";
             insertBD.ExecutaInsUpDel(insert);    
         }
 
@@ -56,7 +59,7 @@ namespace PP3.u.secretario
 
         protected void ddl_Medico_TextChanged(object sender, EventArgs e)
         {
-            lbl_Medico.Text = ddl_Medico.Items[ddl_Medico.SelectedIndex].Text;
+          //  lbl_Medico.Text = ddl_Medico.Items[ddl_Medico.SelectedIndex].Text;
         }
     }
 }

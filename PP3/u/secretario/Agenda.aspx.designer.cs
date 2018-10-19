@@ -13,31 +13,22 @@ namespace PP3.u.secretario {
     public partial class Agenda {
         
         /// <summary>
-        /// Controle lbl_Medico.
+        /// Controle ddl_MedicoAgenda.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Medico;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_MedicoAgenda;
         
         /// <summary>
-        /// Controle GridView1.
+        /// Controle SqlAgenda.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// Controle SqlDataSource1.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlAgenda;
         
         /// <summary>
         /// Controle ScriptManager1.
@@ -58,15 +49,6 @@ namespace PP3.u.secretario {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlConsulta;
         
         /// <summary>
-        /// Controle ddl_Medico.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_Medico;
-        
-        /// <summary>
         /// Controle SqlMedicos.
         /// </summary>
         /// <remarks>
@@ -74,6 +56,15 @@ namespace PP3.u.secretario {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlMedicos;
+        
+        /// <summary>
+        /// Controle GridView1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
         /// Controle SqlPacientes.
