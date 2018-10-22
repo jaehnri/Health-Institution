@@ -109,9 +109,6 @@ select * from Exame
 insert into Especialidade values ('Pediatra')
 insert into Especialidade values ('Urologista')
 insert into Especialidade values ('Ginecologia')
-
-insert into Exame values(4, 'Exame de geriatra')
-
 insert into especialidade values ('Psiquiatra')
 insert into especialidade values ('Cardiologista')
 insert into especialidade values ('Dermatologista')
@@ -119,6 +116,9 @@ insert into especialidade values ('Geriatra')
 insert into especialidade values ('Otorrinolaringologista')
 insert into especialidade values ('Reumatologista')
 insert into especialidade values ('Ortopedista')
+
+insert into Exame values(4, 'Exame de geriatra')
+insert into Exame values(4, 'Exame de geriatra 2')
 
 drop table consulta 
 drop table paciente

@@ -53,23 +53,17 @@ namespace PP3.u.secretario
             PP3ConexaoBD insertBD = new PP3ConexaoBD();
             insertBD.Connection(conString);
             insertBD.AbrirConexao();
-            string cadastro = "";
+            string cadastro;
 
-            if (Session["cadastro"].ToString() == "medico")
-            {
+            if (Session["cadastro"].Equals("medico"))
                 cadastro = "insert into medico values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + "' ,"+ ddl_Especialidades.SelectedValue +")";
-            }
 
-            if (Session["cadastro"].ToString() == "paciente")
-            {
+            else if (Session["cadastro"].Equals("paciente"))
                 cadastro = "insert into paciente values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + ")";
-            }
 
-
-            if (Session["cadastro"].ToString() == "secretaria")
-            {
+            else 
                 cadastro = "insert into secretaria values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + "')";
-            }
+            
 
             insertBD.ExecutaInsUpDel(cadastro);
             return true;

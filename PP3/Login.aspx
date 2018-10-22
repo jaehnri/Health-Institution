@@ -3,7 +3,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
+ <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+     <ContentTemplate>
     <!-- SECTION PACIENTE -->
     <section  class="probootstrap-section overlay bg-image" style="height: 33% !important; background-image: url(imagens/healthcaring.png)">
     <div class="container">
@@ -13,8 +14,7 @@
             <br>
           <div class="row justify-content-center mb-5">
             <div class="col-md-4">
-                <button style="background-color: #00235e;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModalPaciente">
-                Entrar Como Paciente</button>
+                <asp:Button ID="btn_Paciente" runat="server" Text="Entrar como Paciente" style="background-color: #00235e;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#loginModal" OnClick="btn_Paciente_Click"/>
             </div>
           </div>
         </div>
@@ -31,8 +31,7 @@
             <br>
           <div class="row justify-content-center mb-5">
             <div class="col-md-4">
-                <button style="background-color: #3333CC;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModalSecretaria">
-                Entrar como ADM</button>
+                <asp:Button ID="btn_ADM" runat="server" Text="Entrar como ADM" style="background-color: #3333CC;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#loginModal" OnClick="btn_ADM_Click" />
             </div>
           </div>
         </div>
@@ -49,8 +48,7 @@
             <br>
           <div class="row justify-content-center mb-5">
             <div class="col-md-4">
-            <button style="background-color: #000066;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModalMedico">
-            Entrar Como Médico</button>
+                <asp:Button ID="btn_Medico" runat="server" Text="Entrar Como Médico" style="background-color: #000066;" type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#loginModal" OnClick="btn_Medico_Click" />
             </div>
           </div>
         </div>
@@ -93,10 +91,13 @@
         </div>
       </div>
     </div>
+     
   </footer>
+    </ContentTemplate>
+  </asp:UpdatePanel>
     
-<!-- Modal Medico -->
-<div class="modal fade" id="exampleModalMedico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Login -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate>                             
@@ -111,15 +112,15 @@
         <form action="#" method="get" class="probootstrap-form">
             <div class="probootstrap-form">
                 <div class="form-group">
-                    <asp:textbox runat="server" class="form-control" id="txt_NomeMedico" type="text" placeholder="Seu Nome"></asp:textbox>
+                    <asp:textbox runat="server" class="form-control" id="txt_Login" type="text" placeholder="Seu Nome"></asp:textbox>
                 </div>
                 <div class="form-group">
-                    <asp:textbox runat="server" class="form-control" id="txt_SenhaMedico" type="text" TextMode="Password" placeholder="Sua Senha"></asp:textbox>
+                    <asp:textbox runat="server" class="form-control" id="txt_Senha" type="text" TextMode="Password" placeholder="Sua Senha"></asp:textbox>
                 </div>
             </div>
 
             <div class="modal-footer">
-                <asp:Button ID="Button1" CssClass="btn btn-secondary"  runat="server" Text="LOGAR" OnClick="btn_LogarMedico_Click" UseSubmitBehavior="False"></asp:Button>         
+                <asp:Button ID="btn_Entrar" CssClass="btn btn-secondary"  runat="server" Text="LOGAR" OnClick="btn_Entrar_Click" UseSubmitBehavior="False"></asp:Button>         
             </div>
         </form>
     </div>
@@ -127,74 +128,6 @@
           </asp:UpdatePanel>
     </div>
   </div>
-</div>
-
-    <!-- Modal ADM -->
-<div class="modal fade" id="exampleModalSecretaria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <asp:UpdatePanel ID="UpdatePanel3" runat="server"><ContentTemplate>                             
-      <div class="modal-header">
-          <h5 class="modal-title"><asp:Label ID="lblTituloADM" runat="server" Text="Entrar como Secretário ou Administrador"></asp:Label></h5>         
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-    <div class="modal-body">
-        <form action="#" method="get" class="probootstrap-form">
-            <div class="probootstrap-form">
-                <div class="form-group">
-                    <asp:textbox runat="server" class="form-control" id="txt_NomeADM" type="text" placeholder="Seu Nome"></asp:textbox>
-                </div>
-                <div class="form-group">
-                    <asp:textbox runat="server" class="form-control" id="txt_SenhaADM" type="text" TextMode="Password" placeholder="Sua Senha"></asp:textbox>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-               <asp:Button ID="btn_EntrarADM" runat="server" Text="LOGAR" CssClass="btn btn-secondary" UseSubmitBehavior="False" OnClick="btn_EntrarADM_Click"/>          
-            </div>
-        </form>
-    </div>
-          </ContentTemplate>
-          </asp:UpdatePanel>
-    </div>
-  </div>
-</div>
-
-    <!-- Modal Paciente -->
-<div class="modal fade" id="exampleModalPaciente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <asp:UpdatePanel ID="UpdatePanel2" runat="server"><ContentTemplate>                             
-      <div class="modal-header">
-          <h5 class="modal-title"><asp:Label ID="lblTituloPaciente" runat="server" Text="Entrar como Paciente"></asp:Label></h5>         
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-    <div class="modal-body">
-        <form action="#" method="get" class="probootstrap-form">
-            <div class="probootstrap-form">
-                <div class="form-group">
-                    <asp:textbox runat="server" class="form-control" id="txt_NomePaciente" type="text" placeholder="Seu Nome"></asp:textbox>
-                </div>
-                <div class="form-group">
-                    <asp:textbox runat="server" class="form-control" id="txt_SenhaPaciente" type="text" TextMode="Password" placeholder="Sua Senha"></asp:textbox>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-               <!--botao aqui -->          
-            </div>
-        </form>
-    </div>
-          </ContentTemplate>
-          </asp:UpdatePanel>
-    </div>
-  </div>
-</div>                         
+</div>                        
     
 </asp:Content>

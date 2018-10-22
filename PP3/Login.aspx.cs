@@ -13,10 +13,9 @@ namespace PP3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
         }
 
-        protected void btn_LogarMedico_Click(object sender, EventArgs e)
+   /*     protected void btn_LogarMedico_Click(object sender, EventArgs e)
         {
             String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
 
@@ -27,7 +26,7 @@ namespace PP3
 
 
             // checar se o usuario digitou dados para o LOGIN e SENHA
-            if ((txt_NomeMedico.Text == "") || (txt_SenhaMedico.Text == ""))
+            if ((txt_Nome.Text == "") || (txt_SenhaMedico.Text == ""))
             {
                 lbl_Titulo.Attributes["style"] = "color:maroon; font-weight:bold;";
                 lbl_Titulo.Text = "Preencha todos os campos! Tente novamente!";
@@ -112,14 +111,10 @@ namespace PP3
                 Response.Redirect("u/paciente/foipaciente.aspx");
             }
             acessoBD.FecharConexao();
-        }
+        } */
 
-        protected void txt_NomeMedico_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        protected void btn_EntrarADM_Click(object sender, EventArgs e)
+        protected void btn_Entrar_Click(object sender, EventArgs e)
         {
             String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
 
@@ -130,42 +125,74 @@ namespace PP3
 
 
             // checar se o usuario digitou dados para o LOGIN e SENHA
-            if ((txt_NomeADM.Text == "") || (txt_SenhaADM.Text == ""))
+            if ((txt_Login.Text == "") || (txt_Senha.Text == ""))
             {
-                lblTituloADM.Attributes["style"] = "color:maroon; font-weight:bold;";
-                lblTituloADM.Text = "Preencha todos os campos!";
+                lbl_Titulo.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lbl_Titulo.Text = "Preencha todos os campos!";
                 acessoBD.FecharConexao();
                 return;
             }
+            String sqlAcesso;
 
-            String sqlAcesso = "select * from Secretaria where nome='" + txt_NomeADM.Text + "'";
+            if (Session["funcao"].Equals("Paciente"))
+                sqlAcesso = "select * from Paciente where nome='" + txt_Login.Text + "'";
+            else if (Session["funcao"].Equals("ADM"))
+                sqlAcesso = "select * from Secretaria where nome='" + txt_Login.Text + "'";
+            else 
+                sqlAcesso = "select * from Medico where nome='" + txt_Login.Text + "'";
 
             int achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
             if (achouReg <= 0)
             {
-                lblTituloADM.Attributes["style"] = "color:maroon; font-weight:bold;";
-                lblTituloADM.Text = "Usuário não encontrado.";
+                lbl_Titulo.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lbl_Titulo.Text = "Usuário não encontrado.";
                 return;
             }
 
-            sqlAcesso = "select * from Secretaria where nome='" + txt_NomeADM.Text + "' and senha='" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_SenhaADM.Text) + "'";
+            if (Session["funcao"].Equals("Paciente"))
+                sqlAcesso = "select * from Paciente where nome='" + txt_Login.Text + "' and senha='" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_Senha.Text) + "'";
+            else if (Session["funcao"].Equals("ADM"))
+                sqlAcesso = "select * from Secretaria where nome='" + txt_Login.Text + "' and senha='" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_Senha.Text) + "'";
+            else
+                sqlAcesso = "select * from Medico where nome='" + txt_Login.Text + "' and senha='" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_Senha.Text) + "'";
+
             achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
             if (achouReg <= 0)
             {
-                lblTituloADM.Attributes["style"] = "color:maroon; font-weight:bold;";
-                lblTituloADM.Text = "Senha incorreta. Por favor, digite novamente";
+                lbl_Titulo.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lbl_Titulo.Text = "Senha incorreta. Por favor, digite novamente";
                 return;
             }
 
             {
                 // criando variavel de sessao
-                Session["username"] = txt_NomeADM.Text;
-                Session["funcao"] = "secretario";
+                Session["username"] = txt_Login.Text;
                 // redirecionar para outra pagina
                 // Response.Redirect("proximaPagina.aspx");
-                Response.Redirect("u/secretario/index.aspx");
+                if (Session["funcao"].Equals("Paciente"))
+                    Response.Redirect("u/paciente/index.aspx");
+                else if (Session["funcao"].Equals("ADM"))
+                    Response.Redirect("u/secretario/index.aspx");
+                else if (Session["funcao"].Equals("Medico"))
+                    Response.Redirect("u/medico/index.aspx");
+
             }
             acessoBD.FecharConexao();
+        }
+
+        protected void btn_Paciente_Click(object sender, EventArgs e)
+        {
+            Session["funcao"] = "Paciente";
+        }
+
+        protected void btn_ADM_Click(object sender, EventArgs e)
+        {
+            Session["funcao"] = "ADM";
+        }
+
+        protected void btn_Medico_Click(object sender, EventArgs e)
+        {
+            Session["funcao"] = "Medico";
         }
     }
 }
