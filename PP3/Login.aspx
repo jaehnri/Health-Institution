@@ -102,7 +102,7 @@
     <div class="modal-content">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate>                             
       <div class="modal-header">
-          <h5 class="modal-title"><asp:Label ID="lbl_Titulo" runat="server" Text="Entrar como Médico"></asp:Label></h5>         
+          <h5 class="modal-title"><asp:Label ID="lbl_Titulo" runat="server" Text="Logar"></asp:Label></h5>         
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

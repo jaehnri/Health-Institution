@@ -183,16 +183,19 @@ namespace PP3
         protected void btn_Paciente_Click(object sender, EventArgs e)
         {
             Session["funcao"] = "Paciente";
+            lbl_Titulo.Text = "Entrar como Paciente:";
         }
 
         protected void btn_ADM_Click(object sender, EventArgs e)
         {
             Session["funcao"] = "ADM";
+            lbl_Titulo.Text = "Entrar como Administrador:";
         }
 
         protected void btn_Medico_Click(object sender, EventArgs e)
         {
             Session["funcao"] = "Medico";
+            lbl_Titulo.Text = "Entrar como Médico:";
         }
     }
 }
