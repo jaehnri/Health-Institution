@@ -35,8 +35,11 @@
           </form>
         </div>
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a href="l.aspx" class="nav-link">
-        <asp:Label ID="Username" runat="server" Text=""></asp:Label></a></li>
+            <li class="nav-item">
+                <a href="../../index.aspx" class="nav-link  accordion=====">
+                    <asp:Label ID="Username" runat="server" Text=""></asp:Label>
+                </a> 
+            </li>
         </ul>
       </div>
     </div>
