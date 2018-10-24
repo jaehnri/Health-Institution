@@ -43,11 +43,21 @@ namespace PP3.u.secretario
             String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
             string dataHora = cal_data.SelectedDate.ToString();
             dataHora = dataHora.Substring(0, 11);
-            dataHora += txt_hora.Text+":00";
-            PP3ConexaoBD insertBD = new PP3ConexaoBD();
+            dataHora += txt_hora.Text + ":00";
+
+            if ((txt_hora.Text[0] == '0' && txt_hora.Text[1] < '7') || (txt_hora.Text[0] == '1' && (txt_hora.Text[1] > '1' && txt_hora.Text[1] < '4')) || (txt_hora.Text[0] == '1' && txt_hora.Text[1] > '7'))
+            {
+
+                lbl_Mensagem.Visible = true;
+                lbl_Mensagem.Text = "A clínica estará fechada este horário.";
+                return;
+            }
+
+
+                    PP3ConexaoBD insertBD = new PP3ConexaoBD();
             insertBD.Connection(conString);           
             insertBD.AbrirConexao();
-            string insert = "Insert into consulta values ( "+ ddl_MedicoConsulta.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", " + ddl_Exame.SelectedValue + ", " + "1" + ", '" + dataHora +"')";
+            string insert = "Insert into consulta values ( "+ ddl_MedicoConsulta.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", " + "1" + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', 'PENDENTE', 'NENHUMA')";
             insertBD.ExecutaInsUpDel(insert);    
         }
 

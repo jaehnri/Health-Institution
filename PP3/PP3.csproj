@@ -80,6 +80,8 @@
     <Content Include="css\open-iconic-bootstrap.min.css" />
     <Content Include="css\owl.carousel.min.css" />
     <Content Include="css\owl.theme.default.min.css" />
+    <Content Include="imagens\agenda.jpg" />
+    <Content Include="imagens\consulta.jpg" />
     <Content Include="imagens\consulta1.jpg" />
     <Content Include="imagens\consulta2.jpg" />
     <Content Include="imagens\consulta3.jpg" />
@@ -87,6 +89,7 @@
     <Content Include="imagens\criancamedico2.jpg" />
     <Content Include="imagens\crianca.jpeg" />
     <Content Include="imagens\doctor.jpg" />
+    <Content Include="imagens\graficos.jpg" />
     <Content Include="imagens\healthcaring.png" />
     <Content Include="imagens\medico-crianca.png" />
     <Content Include="imagens\médica.jpg" />
@@ -186,30 +189,35 @@
     </Compile>
     <Compile Include="u\medico\agenda.aspx.cs">
       <DependentUpon>agenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="u\medico\agenda.aspx.designer.cs">
       <DependentUpon>agenda.aspx</DependentUpon>
     </Compile>
     <Compile Include="u\medico\consulta.aspx.cs">
       <DependentUpon>consulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="u\medico\consulta.aspx.designer.cs">
       <DependentUpon>consulta.aspx</DependentUpon>
     </Compile>
     <Compile Include="u\medico\graficos.aspx.cs">
       <DependentUpon>graficos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="u\medico\graficos.aspx.designer.cs">
       <DependentUpon>graficos.aspx</DependentUpon>
     </Compile>
     <Compile Include="u\medico\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="u\medico\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="u\medico\Medico.Master.cs">
       <DependentUpon>Medico.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="u\medico\Medico.Master.designer.cs">
       <DependentUpon>Medico.Master</DependentUpon>

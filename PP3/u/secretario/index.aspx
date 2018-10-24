@@ -7,10 +7,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <h2 class="text-white display-4">Especialistas em Cuidado Familiar</h2>
-          <p class="text-white mb-5 lead"></p>
+          <h2 class="text-white display-4">&nbsp;</h2>
+            <h2 class="text-white display-4">z| </h2>
           <div class="row justify-content-center mb-5">
-            <div class="col-md-4"><a href="agenda.aspx" class="btn btn-secondary btn-block">Agendar <span class="icon-arrow-right"></span></a></div>
+            <div class="col-md-4">&nbsp;&nbsp;</div>
           </div>
         </div>
       </div>
@@ -30,7 +30,6 @@
                 <Columns>
                     
                     
-                    <asp:BoundField DataField="Exame" HeaderText="Exame" SortExpression="Exame" />
                     <asp:BoundField DataField="Médico" HeaderText="Médico" SortExpression="Médico" />
                     <asp:BoundField DataField="Paciente" HeaderText="Paciente" SortExpression="Paciente" />
                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />

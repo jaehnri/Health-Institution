@@ -43,3 +43,15 @@ C:\Users\u17185\Desktop\PP3\PP3\obj\Debug\PP3.csprojResolveAssemblyReference.cac
 C:\Users\u17185\Desktop\PP3\PP3\obj\Debug\PP3.csproj.CoreCompileInputs.cache
 C:\Users\u17185\Desktop\PP3\PP3\obj\Debug\PP3.dll
 C:\Users\u17185\Desktop\PP3\PP3\obj\Debug\PP3.pdb
+C:\Users\u17197\Desktop\PPIII\PP3\obj\Debug\PP3.csprojResolveAssemblyReference.cache
+C:\Users\u17197\Desktop\PPIII\PP3\obj\Debug\PP3.csproj.CoreCompileInputs.cache
+C:\Users\u17197\Desktop\PPIII\PP3\obj\Debug\PP3.dll
+C:\Users\u17197\Desktop\PPIII\PP3\obj\Debug\PP3.pdb
+C:\Users\u17197\Desktop\PPIII\PP3\bin\PP3.dll.config
+C:\Users\u17197\Desktop\PPIII\PP3\bin\PP3.dll
+C:\Users\u17197\Desktop\PPIII\PP3\bin\PP3.pdb
+C:\Users\u17197\Desktop\PPIII\PP3\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\u17197\Desktop\PPIII\PP3\bin\Microsoft.Owin.dll
+C:\Users\u17197\Desktop\PPIII\PP3\bin\Owin.dll
+C:\Users\u17197\Desktop\PPIII\PP3\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\u17197\Desktop\PPIII\PP3\bin\Microsoft.Owin.xml

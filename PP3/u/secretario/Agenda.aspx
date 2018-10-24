@@ -49,10 +49,11 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Marcar Consulta</button>
 
-    
+   
              
      
 <!-- Modal -->
+    
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -66,9 +67,10 @@
       <div class="modal-body">
        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
+          
           <div class="container">
             <center>
-            
+            <asp:Label ID="lbl_Mensagem" runat="server" Text="" visible=false></asp:Label>
             <div class="row">
                      Médico: 
                 <div class="col-md-4 mb-md-0 mb-3">
@@ -85,13 +87,6 @@
                 </div>
             </div>
           <br/>
-            <div class="row">
-                Exame:  
-                <div class="col-md-2 mb-md-0 mb-3">
-                    <asp:DropDownList ID="ddl_Exame" runat="server" DataSourceID="SqlExames" DataTextField="nome" DataValueField="idExame" Width="190px" AutoPostBack="True"></asp:DropDownList>
-                </div>
-            </div>
-          <br/>
                 <div class="row">
                 Hora:  
                 <div class="col-md-2 mb-md-0 mb-3">
@@ -99,6 +94,17 @@
                 </div>
             </div>
           <br/>
+
+            <div class="row">
+                Duracao:  
+                <div class="col-md-2 mb-md-0 mb-3">
+                    <asp:DropDownList ID="ddl_duracao" runat="server">
+                    <asp:ListItem Value="00:30">00:30</asp:ListItem>
+                    <asp:ListItem>01:00</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <br/>
          </center>
           
         

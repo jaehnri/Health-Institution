@@ -30,17 +30,15 @@ create table Consulta
 	idConsulta int identity(1, 1) primary key,
 	idMedico int not null,
 	idPaciente int not null,
-	idExame int not null,
 	idDiagnostico int not null,
 	dataHora datetime not null,
 	duracao varchar(5) not null,
-	statusConsulta varchar(10) not null,
+	statusConsulta varchar(15) not null,
+	avaliacao varchar(10) not null,
+	obsevacoes varchar(100) not null,
 	Constraint FK_idMedico foreign key (idMedico) references Medico(idMedico),
 	Constraint FK_idPaciente foreign key (idPaciente) references Paciente(idPaciente),
-	Constraint FK_idExame foreign key (idExame) references Exame(idExame),
 	Constraint FK_idDiagnostico foreign key (idDiagnostico) references Diagnostico(idDiagnostico),
-	                                                                             
-
 )
 
 create table Exame
@@ -80,7 +78,7 @@ As
 	 
 BEGIN
 
-	Select e.nome as Exame, m.nome as Médico, p.nome as Paciente, p.email as Email , c.dataHora as Data from medico as m, exame as e, paciente as p, consulta as c where c.dataHora>=GETDATE() and c.dataHora <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico and c.idExame = e.idExame
+	Select  m.nome as Médico, p.nome as Paciente, p.email as Email , c.dataHora as Data from medico as m, exame as e, paciente as p, consulta as c where c.dataHora>=GETDATE() and c.dataHora <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico
 
 END
 create proc ConsultasNomeMedico @nomeMedico varchar(30)
