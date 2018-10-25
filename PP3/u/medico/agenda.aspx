@@ -4,13 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
     <br />
   <!-- FOOTER -->
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" GridLines="None" ForeColor="#333333" CellPadding="4" DataSourceID="SqlAgendaMedico" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" GridLines="None" ForeColor="#333333" CellPadding="4" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
          <AlternatingRowStyle BackColor="White" />
-         <Columns>
-                    <asp:BoundField DataField="Paciente" HeaderText="Paciente" SortExpression="Paciente" />
-                    <asp:BoundField DataField="Data" HeaderText="Data" SortExpression="Data" />
-                    <asp:BoundField DataField="Exame" HeaderText="Exame" SortExpression="Exame" />
-                </Columns>
          <EditRowStyle BackColor="#2461BF" />
          <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
          <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -22,11 +17,6 @@
          <SortedDescendingCellStyle BackColor="#E9EBEF" />
          <SortedDescendingHeaderStyle BackColor="#4870BE" />
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlAgendaMedico" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="exec ConsultasNomeMedico @nomeMedico">
-        <SelectParameters>
-            <asp:SessionParameter Name="nomeMedico" SessionField="username" />
-        </SelectParameters>
-    </asp:SqlDataSource>
     <br>
     <!--
     <footer class="probootstrap-footer">
