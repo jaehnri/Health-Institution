@@ -25,20 +25,23 @@ create table Paciente
 	consultaMarcada int not null
 )
 
+
+
 create table Consulta
 (
 	idConsulta int identity(1, 1) primary key,
 	idMedico int not null,
 	idPaciente int not null,
-	idDiagnostico int not null,
 	dataHora datetime not null,
 	duracao varchar(5) not null,
 	statusConsulta varchar(15) not null,
-	avaliacao varchar(10) not null,
-	obsevacoes varchar(100) not null,
+	avaliacao varchar(10),
+	sintomas ntext,
+	exames ntext,
+	medicacoes ntext,
+	observacoes ntext,
 	Constraint FK_idMedico foreign key (idMedico) references Medico(idMedico),
 	Constraint FK_idPaciente foreign key (idPaciente) references Paciente(idPaciente),
-	Constraint FK_idDiagnostico foreign key (idDiagnostico) references Diagnostico(idDiagnostico),
 )
 
 create table Exame
@@ -49,12 +52,14 @@ create table Exame
 	nome varchar(50) not null,
 )
 
+
+
 create table Diagnostico 
 (
 	idDiagnostico int identity (1,1) primary key,
 	Diagnostico nchar not null,
 )
-
+ 
 create table Secretaria
 (
 	idSecretaria int identity(1, 1) primary key,
@@ -103,6 +108,8 @@ select * from Especialidade
 select * from Medico
 select * from Exame
 
+update Consulta set sintomas = 'cisto na bola', exames='ultrassom de bola' where idConsulta = 1
+
 
 insert into Especialidade values ('Pediatra')
 insert into Especialidade values ('Urologista')
@@ -114,9 +121,11 @@ insert into especialidade values ('Geriatra')
 insert into especialidade values ('Otorrinolaringologista')
 insert into especialidade values ('Reumatologista')
 insert into especialidade values ('Ortopedista')
+insert into especialidade values ('Clinico Geral')
 
 insert into Exame values(4, 'Exame de geriatra')
 insert into Exame values(4, 'Exame de geriatra 2')
+
 
 drop table consulta 
 drop table paciente
@@ -127,6 +136,8 @@ drop table MedicoEspecialidade
 drop table agenda
 drop table diagnostico
 drop table exame
+
+
 
 
 

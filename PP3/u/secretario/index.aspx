@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <h2 class="text-white display-4">&nbsp;</h2>
-            <h2 class="text-white display-4">z| </h2>
+            <h2 class="text-white display-4"></h2>
           <div class="row justify-content-center mb-5">
             <div class="col-md-4">&nbsp;&nbsp;</div>
           </div>

@@ -45,20 +45,69 @@ namespace PP3.u.secretario
             dataHora = dataHora.Substring(0, 11);
             dataHora += txt_hora.Text + ":00";
 
-            if ((txt_hora.Text[0] == '0' && txt_hora.Text[1] < '7') || (txt_hora.Text[0] == '1' && (txt_hora.Text[1] > '1' && txt_hora.Text[1] < '4')) || (txt_hora.Text[0] == '1' && txt_hora.Text[1] > '7'))
+            if(txt_hora.Text.Equals(""))
             {
+                lbl_Mensagem.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lbl_Mensagem.Text = "Determine uma hora.";
+                return;
+            }
 
-                lbl_Mensagem.Visible = true;
+            if ((txt_hora.Text[0] == '0' && txt_hora.Text[1] < '7') || (txt_hora.Text[0] >= '1' && (txt_hora.Text[1] > '1' && txt_hora.Text[1] < '4')) || (txt_hora.Text[0] >= '1' && txt_hora.Text[1] > '7'))
+            {
+                lbl_Mensagem.Attributes["style"] = "color:maroon; font-weight:bold;";
                 lbl_Mensagem.Text = "A clínica estará fechada este horário.";
                 return;
             }
 
+            if(existeConsulta(dataHora))
+            {
+                lbl_Mensagem.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lbl_Mensagem.Text = "Já há uma consulta marcada neste horário com este médico.";
+                return;
+            }
 
-                    PP3ConexaoBD insertBD = new PP3ConexaoBD();
+            DateTime objData =DateTime.Parse(dataHora);
+            if(objData <= DateTime.Now)
+            {
+                lbl_Mensagem.Attributes["style"] = "color:maroon; font-weight:bold;";
+                lbl_Mensagem.Text = "Escolha uma data e hora futura.";
+                return;
+            }
+
+
+
+            PP3ConexaoBD insertBD = new PP3ConexaoBD();
             insertBD.Connection(conString);           
             insertBD.AbrirConexao();
-            string insert = "Insert into consulta values ( "+ ddl_MedicoConsulta.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", " + "1" + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', 'PENDENTE', 'NENHUMA')";
-            insertBD.ExecutaInsUpDel(insert);    
+            string insert = "Insert into Consulta values ( "+ ddl_MedicoConsulta.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', NULL, NULL, NULL, NULL, NULL)";
+            insertBD.ExecutaInsUpDel(insert);
+            lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
+            lbl_Mensagem.Text = "Consulta marcada com sucesso!";
+        }
+
+        protected bool existeConsulta(string dataHora)
+        {
+            String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
+
+            PP3ConexaoBD acessoBD = new PP3ConexaoBD();
+            acessoBD.Connection(conString);
+            acessoBD.AbrirConexao();
+
+           
+            String sqlAcesso = "select * from consulta where idMedico = "+ddl_MedicoConsulta.SelectedValue+" and dataHora = '" + dataHora+"'";
+
+            int achouReg = acessoBD.ExecutarConsulta(sqlAcesso);
+
+            if (achouReg == -1)
+            {
+                acessoBD.FecharConexao();
+                return false;
+            }
+            else
+            {
+                acessoBD.FecharConexao();
+                return true;
+            }
         }
 
         protected void ddl_Medico_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,6 +119,11 @@ namespace PP3.u.secretario
         protected void ddl_Medico_TextChanged(object sender, EventArgs e)
         {
           //  lbl_Medico.Text = ddl_Medico.Items[ddl_Medico.SelectedIndex].Text;
+        }
+
+        protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+
         }
     }
 }

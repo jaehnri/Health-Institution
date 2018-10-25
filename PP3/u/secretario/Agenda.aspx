@@ -19,7 +19,7 @@
     <asp:SqlDataSource ID="SqlConsulta" runat="server"></asp:SqlDataSource>
     <br/>
     <asp:SqlDataSource ID="SqlMedicos" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT [idMedico], [nome] FROM [Medico]"></asp:SqlDataSource>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlAgenda" ForeColor="#333333" GridLines="None">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlAgenda" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" ShowHeaderWhenEmpty="True">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="DataHora" HeaderText="Hora" SortExpression="DataHora" />
@@ -53,24 +53,24 @@
              
      
 <!-- Modal -->
-    
+  
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>  
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Marcar Consulta</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><asp:Label ID="lbl_Mensagem" runat="server" Text="Marcar Consulta"></asp:Label></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
         
       <div class="modal-body">
-       <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-        <ContentTemplate>
+       
           
           <div class="container">
-            <center>
-            <asp:Label ID="lbl_Mensagem" runat="server" Text="" visible=false></asp:Label>
+            <center>          
             <div class="row">
                      Médico: 
                 <div class="col-md-4 mb-md-0 mb-3">
@@ -133,17 +133,19 @@
           <br/>
           </div>
 
-        </ContentTemplate>
-    </asp:UpdatePanel>
+       
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
          <asp:button runat="server" text="Marcar" class="btn btn-secondary" type=" button" ID="btn_MarcarConsulta" OnClick="btn_MarcarConsulta_Click"/>
       </div>
-    </div>
+    </div> 
+    </ContentTemplate>
+    </asp:UpdatePanel>
   </div>
 </div>
+
     
     
 </asp:Content>

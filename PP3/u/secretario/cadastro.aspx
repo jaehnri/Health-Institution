@@ -5,6 +5,7 @@
     <section class="probootstrap-subscribe">
             <div class="container">
                 <div class="col-md-4">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="txt_Nome" runat="server" CssClass="form-control" placeholder="Nome"></asp:TextBox>
                 </div>
                 <br />
