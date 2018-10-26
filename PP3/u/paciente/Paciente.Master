@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PP3.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Paciente.master.cs" Inherits="PP3.u.paciente.Paciente" %>
 
 <!DOCTYPE html>
 
@@ -12,7 +12,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark probootstrap-navbar-dark" style="padding:0;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark probootstrap-navbar-dark" style="padding:0;">
     <div class="container" style="padding: 0; margin: 0; max-width: unset;">
       <!-- <a class="navbar-brand" href="index.html">Health</a> -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-nav" aria-controls="probootstrap-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,9 +22,8 @@
       <div class="collapse navbar-collapse" id="probootstrap-nav">
         <ul class="navbar-nav m-auto" style="margin-top: 0;">
           <li class="nav-item active"><a href="index.aspx" class="nav-link pl-0">Home</a></li>
-          <li class="nav-item"><a href="medico.aspx" class="nav-link">Médico</a></li>
-          <li class="nav-item"><a href="secretaria.aspx" class="nav-link">Secretaria</a></li>
-          <li class="nav-item"><a href="Login.aspx" class="nav-link">Paciente</a></li>
+          <li class="nav-item"><a href="Avaliacao.aspx" class="nav-link">Avaliar</a></li>
+          <li class="nav-item"><a href="Diagnostico.aspx" class="nav-link">Consulta</a></li>
         </ul>
         <div class="ml-auto">
           <form action="#" method="get" class="probootstrap-search-form mb-sm-0 mb-3">
@@ -35,17 +34,20 @@
           </form>
         </div>
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a href="Login.aspx" class="nav-link">Entrar</a></li>
+            <li class="nav-item">
+                <a href="../../index.aspx" class="nav-link  accordion=====">
+                    <asp:Label ID="Username" runat="server" Text=""></asp:Label>
+                </a> 
+            </li>
         </ul>
       </div>
     </div>
   </nav>
-
     <form id="form1" runat="server">
-        
+        <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-        
+        </div>
     </form>
                 <script src="../../js/jquery.min.js"></script>
          <!--JavaScript Bootstrap-->
