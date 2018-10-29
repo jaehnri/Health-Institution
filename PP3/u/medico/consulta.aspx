@@ -78,9 +78,12 @@
             <div class="form-group">
                  <asp:TextBox ID="txt_Observacoes" CssClass="form-control" runat="server"  TextMode="MultiLine"  placeholder="Observações..." style="height: 300px !important;"></asp:TextBox>
             </div>
+              <div class="form-group">
+                  <asp:CheckBox ID="ck_Reagendar" CssClass="form-control" runat="server" Text="Reagendar?" />
+              </div> <br />
             <div class="form-group">
               <asp:Button ID="btn_EnviarConsulta" runat="server" Text="Enviar" cssClass="btn btn-secondary" OnClick="btn_EnviarConsulta_Click" />
-            </div>
+            </div>              
           </form>
         </div>
       </div>

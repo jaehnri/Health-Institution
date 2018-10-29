@@ -40,7 +40,16 @@ namespace PP3.u.medico
             PP3ConexaoBD insertBD = new PP3ConexaoBD();
             insertBD.Connection(conString);
             insertBD.AbrirConexao();
-            string update = "update Consulta set sintomas='" + txt_Sintomas.Text + "', exames='" + txt_Exames.Text + "', medicacoes='" + txt_Medicacoes.Text + "', observacoes='" + txt_Observacoes.Text + "'  where idConsulta = '" + Session["idConsulta"].ToString() + "'";
+            string update = "";
+            if (ck_Reagendar.Checked)
+            {
+                update = "update Consulta set statusConsulta='REAGENDAR', sintomas='" + txt_Sintomas.Text + "', exames='" + txt_Exames.Text + "', medicacoes='" + txt_Medicacoes.Text + "', observacoes='" + txt_Observacoes.Text + "'  where idConsulta = '" + Session["idConsulta"].ToString() + "'";
+            }
+
+            if (!ck_Reagendar.Checked)
+            {
+                update = "update Consulta set statusConsulta='FINALIZADA', sintomas='" + txt_Sintomas.Text + "', exames='" + txt_Exames.Text + "', medicacoes='" + txt_Medicacoes.Text + "', observacoes='" + txt_Observacoes.Text + "'  where idConsulta = '" + Session["idConsulta"].ToString() + "'";
+            }
 
             insertBD.ExecutaInsUpDel(update);
             return true;

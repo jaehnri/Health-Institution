@@ -112,6 +112,15 @@ namespace PP3.u.medico {
         protected global::System.Web.UI.WebControls.TextBox txt_Observacoes;
         
         /// <summary>
+        /// Controle ck_Reagendar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ck_Reagendar;
+        
+        /// <summary>
         /// Controle btn_EnviarConsulta.
         /// </summary>
         /// <remarks>
