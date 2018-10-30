@@ -24,7 +24,7 @@
           <div class="probootstrap-feature-item-text">
             <span class="icon"><i class="flaticon-gym-control-of-exercises-with-a-list-on-a-clipboard-and-heart-beats display-4"></i></span>
             
-            <h2>Cardiologia <span>Tratamento</span></h2>
+            <h2>Cardiologia <span>Tratamentos</span></h2>
           </div>
         </div> 
       </div>
@@ -35,13 +35,19 @@
       <div class="row mb-5">
         <div class="col-md-12 text-center">
           <h2 class="h1">Próximas Consultas!</h2>
-          <p class="lead text-secondary">Para .</p>
-             <center><asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlAgenda" ForeColor="#333333" GridLines="None">
+          <p class="lead text-secondary">Para fazer anotações sobre a consulta atual, clique no botão da respectiva consulta.</p>
+             <center><asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlAgenda" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" DataKeyNames="ID">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
                     <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
                     <asp:BoundField DataField="Duração" HeaderText="Duração" SortExpression="Duração" />
                     <asp:BoundField DataField="Data" HeaderText="Data" SortExpression="Data" />
+                    <asp:TemplateField HeaderText="Acessar">
+                        <ItemTemplate>
+                            <asp:HyperLink ID="HyperLink1" runat="server"><img src="../../imagens/doctor-icon.png" style="width: 50px"></img></asp:HyperLink>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -54,7 +60,7 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlAgenda" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select p.nome as Nome, c.duracao as Duração, c.dataHora as Data from Medico as m, Consulta as c, paciente as p where p.idPaciente = c.idPaciente and c.idMedico = m.idMedico and m.nome = @nomeMedico">
+            <asp:SqlDataSource ID="SqlAgenda" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select c.idConsulta as ID, p.nome as Nome, c.duracao as Duração, c.dataHora as Data from Medico as m, Consulta as c, paciente as p where p.idPaciente = c.idPaciente and c.idMedico = m.idMedico and m.nome = @nomeMedico and statusConsulta = 'PENDENTE'">
                 <SelectParameters>
                     <asp:SessionParameter Name="nomeMedico" SessionField="username" />
                 </SelectParameters>

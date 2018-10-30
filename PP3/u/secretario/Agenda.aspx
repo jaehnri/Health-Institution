@@ -2,16 +2,36 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+    <!-- Button trigger modal -->
 
-   
-   
-    <asp:DropDownList ID="ddl_MedicoAgenda" runat="server" DataSourceID="SqlMedicos" DataTextField="nome" DataValueField="idMedico" OnSelectedIndexChanged="ddl_Medico_SelectedIndexChanged" AutoPostBack="True" OnTextChanged="ddl_Medico_TextChanged" ></asp:DropDownList>
-    <asp:SqlDataSource ID="SqlAgenda" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="exec agenda @idMedico">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="ddl_MedicoAgenda" Name="idMedico" PropertyName="SelectedValue" />
-        </SelectParameters>
-    </asp:SqlDataSource>
+   <section class="probootstrap-section overlay bg-image" style="background-image: url(../../imagens/consulta3.jpg)">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="text-white display-4">Agebdar Novas Consultas</h2>
+          <p class="text-white mb-5 lead"></p>
+          <div class="row justify-content-center mb-5">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModal">
+                 Marcar Consulta</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="probootstrap-blog-appointment">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-md-6 pr-md-5 pr-0 pt-md-5 pt-0 pb-md-5 pb-0">
+          <h2 class="h1 mb-4 text-white">Consultas de:</h2><asp:DropDownList ID="ddl_MedicoAgenda" runat="server" DataSourceID="SqlMedicos" DataTextField="nome" DataValueField="idMedico" OnSelectedIndexChanged="ddl_Medico_SelectedIndexChanged" AutoPostBack="True" OnTextChanged="ddl_Medico_TextChanged" ></asp:DropDownList>
+
+                <asp:SqlDataSource ID="SqlAgenda" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="exec agenda @idMedico">
+                    <SelectParameters>
+                      <asp:ControlParameter ControlID="ddl_MedicoAgenda" Name="idMedico" PropertyName="SelectedValue" />
+                     </SelectParameters>
+                </asp:SqlDataSource>
    
     
    
@@ -42,41 +62,10 @@
             <asp:ControlParameter ControlID="ddl_MedicoConsulta" DefaultValue="2" Name="idMedico" PropertyName="SelectedValue" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <br/>
-    <br/>
-
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Marcar Consulta</button>
-
-   <section class="probootstrap-section overlay bg-image" style="background-image: url(../../imagens/wallpaper.jpg)">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h2 class="text-white display-4">&nbsp;</h2>
-            <h2 class="text-white display-4"></h2>
-          <div class="row justify-content-center mb-5">
-            <div class="col-md-4">&nbsp;&nbsp;</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <section class="probootstrap-blog-appointment">
-    <div class="container">
-      <div class="row no-gutters">
-        <div class="col-md-6 pr-md-5 pr-0 pt-md-5 pt-0 pb-md-5 pb-0">
-          <h2 class="h1 mb-4 text-white">Consultas de:</h2>
-            <div class="row">
-           
-
-
-            </div>
           <p><a href="#" class="arrow-link">View All <i class="icon-chevron-right"></i></a></p>
         </div>
         <div class="col-md-6 p-md-5 p-3 probootstrap-aside-stretch-right">
-          <h2 class="h1 text-white">Enviar Email</h2>
+          <h2 class="h1 text-white">Consultas a reagendar</h2>
           <form action="#" class="probootstrap-form-appointment">
             <div class="form-group">
 

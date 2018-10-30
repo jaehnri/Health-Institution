@@ -3,14 +3,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <section class="probootstrap-section overlay bg-image" style="background-image: url(../../imagens/wallpaper.jpg)">
+    <section class="probootstrap-section overlay bg-image" style="background-image: url(../../imagens/consulta3.jpg)">
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <h2 class="text-white display-4">&nbsp;</h2>
-            <h2 class="text-white display-4"></h2>
+          <h2 class="text-white display-4">Agebdar Novas Consultas</h2>
+          <p class="text-white mb-5 lead"></p>
           <div class="row justify-content-center mb-5">
-            <div class="col-md-4">&nbsp;&nbsp;</div>
+            <div class="col-md-4"><a href="agenda.aspx" class="btn btn-secondary btn-block">Agenda <span class="icon-arrow-right"></span></a></div>
           </div>
         </div>
       </div>
@@ -25,6 +25,7 @@
         <div class="col-md-6 pr-md-5 pr-0 pt-md-5 pt-0 pb-md-5 pb-0">
           <h2 class="h1 mb-4 text-white">Consultas Próximas:</h2>
             <div class="row">
+                <center>
             <asp:GridView ID="grd_ConsultasProximas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlProxConsultas" ForeColor="#333333" GridLines="None" HorizontalAlign="Left" OnSelectedIndexChanged="grd_ConsultasProximas_SelectedIndexChanged" ShowHeaderWhenEmpty="True">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
@@ -48,6 +49,7 @@
             </asp:GridView>
 
             <asp:SqlDataSource ID="SqlProxConsultas" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="exec proxConsultas"></asp:SqlDataSource>
+            </center>
             </div>
           <p><a href="#" class="arrow-link">View All <i class="icon-chevron-right"></i></a></p>
         </div>
