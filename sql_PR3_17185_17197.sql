@@ -78,14 +78,16 @@ create table Especialidade
 create proc proxConsultas 
 As
 
+	
+BEGIN
 	DECLARE @data datetime
+	
 	SELECT @data = DATEADD(day, 2, GETDATE())
 	 
-BEGIN
-
-	Select  m.nome as Médico, p.nome as Paciente, p.email as Email , c.dataHora as Data from medico as m, exame as e, paciente as p, consulta as c where c.dataHora>=GETDATE() and c.dataHora <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico
+	Select  m.nome as Médico, p.nome as Paciente, p.email as Email , c.dataHora as Data from medico as m, paciente as p, consulta as c where c.dataHora>=GETDATE() and c.dataHora <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico
 
 END
+
 create proc ConsultasNomeMedico @nomeMedico varchar(30)
 As
 BEGIN
@@ -97,8 +99,10 @@ END
 create proc agenda @idMedico int
 as
 BEGIN
-	select c.dataHora as DataHora, p.nome as Nome from consulta as c, paciente as p, medico as m where c.idMedico = @idMedico and m.idMedico = c.idMedico and c.idPaciente = p.idPaciente
+	select c.dataHora as DataHora, p.nome as Nome from consulta as c, paciente as p, medico as m where c.idMedico = @idMedico and m.idMedico = c.idMedico and c.idPaciente = p.idPaciente and c.statusConsulta = 'PENDENTE'
 END
+
+SELECT * FROM Consulta
 
 create proc agendar int @idMedico, int @idPaciente, int @idExame, int
 

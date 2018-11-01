@@ -19,8 +19,10 @@
         </div>
       </div>
     </div>
-  </section>
-
+  </section> 
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
     <section class="probootstrap-blog-appointment">
     <div class="container">
       <div class="row no-gutters">
@@ -35,7 +37,7 @@
    
     
    
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+   
     <asp:SqlDataSource ID="SqlConsulta" runat="server"></asp:SqlDataSource>
     <br/>
     <asp:SqlDataSource ID="SqlMedicos" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT [idMedico], [nome] FROM [Medico]"></asp:SqlDataSource>
@@ -68,23 +70,48 @@
           <h2 class="h1 text-white">Consultas a reagendar</h2>
           <form action="#" class="probootstrap-form-appointment">
             <div class="form-group">
-
             </div>
-            <div class="form-group">
 
+             
+             
+            <div class="form-group">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlReagendar" ForeColor="#333333" GridLines="None">
+                    <AlternatingRowStyle BackColor="White" />
+                    <Columns>
+                        <asp:BoundField DataField="Nome" HeaderText="Paciente" SortExpression="Nome" />
+                        <asp:BoundField DataField="nome1" HeaderText="Médico" SortExpression="nome1" />
+                        <asp:TemplateField HeaderText="Reagendar">
+                            <ItemTemplate>
+                               
+                                <asp:Button ID="btn_Reagendar" runat="server"  Text="Reagendar" CssClass="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" />
+                                  
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <EditRowStyle BackColor="#2461BF" />
+                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#EFF3FB" />
+                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlReagendar" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select p.nome as Nome, m.nome from consulta as c, paciente as p, medico as m where m.idMedico = c.idMedico and c.idPaciente = p.idPaciente and c.statusConsulta = 'REAGENDAR'"></asp:SqlDataSource>
             </div>
-            <div class="form-group">
+                
 
-            </div>
-            <div class="form-group">
-
-                </div>
+         
           </form>
         </div>
       </div>
     </div>
   </section>
-             
+         
+  </ContentTemplate>
+</asp:UpdatePanel>
      
 <!-- Modal -->
   
@@ -182,5 +209,5 @@
 
     
     
-</asp:Content>
+ </asp:Content>
 
