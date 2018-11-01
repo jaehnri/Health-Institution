@@ -52,6 +52,24 @@ create table Exame
 	nome varchar(50) not null,
 )
 
+create table Mes
+(
+	idMes int primary key,
+	nomeMes varchar(20)
+)
+
+insert into Mes values (1, 'Janeiro')
+insert into Mes values (2, 'Fevereiro')
+insert into Mes values (3, 'Março')
+insert into Mes values (4, 'Abril')
+insert into Mes values (5, 'Maio')
+insert into Mes values (6, 'Junho')
+insert into Mes values (7, 'Julho')
+insert into Mes values (8, 'Agosto')
+insert into Mes values (9, 'Setembro')
+insert into Mes values (10, 'Outubro')
+insert into Mes values (11, 'Novembro')
+insert into Mes values (12, 'Dezembro')
 
 
 create table Diagnostico 
@@ -75,6 +93,8 @@ create table Especialidade
 	nome varchar(30) not null
 )
 
+
+
 create proc proxConsultas 
 As
 
@@ -84,7 +104,7 @@ BEGIN
 	
 	SELECT @data = DATEADD(day, 2, GETDATE())
 	 
-	Select  m.nome as Médico, p.nome as Paciente, p.email as Email , c.dataHora as Data from medico as m, paciente as p, consulta as c where c.dataHora>=GETDATE() and c.dataHora <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico
+	Select m.nome as Médico, p.nome as Paciente, p.email as 'E-mail', c.dataHora as 'Data e Hora'  from medico as m, paciente as p, consulta as c where c.dataHora>=GETDATE() and c.dataHora <= @data and p.idPaciente = c.idPaciente and c.idMedico = m.idMedico
 
 END
 
@@ -99,12 +119,16 @@ END
 create proc agenda @idMedico int
 as
 BEGIN
-	select c.dataHora as DataHora, p.nome as Nome from consulta as c, paciente as p, medico as m where c.idMedico = @idMedico and m.idMedico = c.idMedico and c.idPaciente = p.idPaciente and c.statusConsulta = 'PENDENTE'
+	select c.idConsulta as 'ID', dataHora as DataHora, p.nome as Nome from consulta as c, paciente as p, medico as m where c.idMedico = @idMedico and m.idMedico = c.idMedico and c.idPaciente = p.idPaciente and c.statusConsulta = 'PENDENTE'
 END
+
 
 SELECT * FROM Consulta
 
-create proc agendar int @idMedico, int @idPaciente, int @idExame, int
+select m.nome as Médico, count(distinct idPaciente) as Pacientes from Consulta as c, Medico as m where m.idMedico = c.idMedico and c.statusConsulta != 'CANCELADA' group by m.nome
+
+select m.nome as Mes, count(c.idConsulta) from consulta as c, mes as m where
+
 
 select * from Consulta
 select * from paciente
