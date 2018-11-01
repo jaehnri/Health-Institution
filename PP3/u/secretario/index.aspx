@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <h2 class="text-white display-4">Agebdar Novas Consultas</h2>
+          <h2 class="text-white display-4">Agendar Novas Consultas</h2>
           <p class="text-white mb-5 lead"></p>
           <div class="row justify-content-center mb-5">
             <div class="col-md-4"><a href="agenda.aspx" class="btn btn-secondary btn-block">Agenda <span class="icon-arrow-right"></span></a></div>

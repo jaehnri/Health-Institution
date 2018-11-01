@@ -13,14 +13,52 @@ namespace PP3.u.secretario
 {
     public partial class Agenda : System.Web.UI.Page
     {
+        string idCancelar = "";
+        string idReagendar = "";
+
         DateTime data;
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            for (int i = 0; i < GridView2.Rows.Count; i++)
+            {
+                GridView2.Rows[i].Cells[2].Attributes.Add("data-target", "\"#exampleModal\"");
+                GridView2.Rows[i].Cells[2].Attributes.Add("data-toggle", "\"modal\"");
+            }
+
             if (!Page.IsPostBack)
             {
                 cal_data.SelectedDate = DateTime.Now.Date;
-                
+
+                idCancelar = Request.QueryString["IdCancelar"];
+                if (!(idCancelar==null))
+                {
+                    String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
+
+                    PP3ConexaoBD insertBD = new PP3ConexaoBD();
+                    insertBD.Connection(conString);
+                    insertBD.AbrirConexao();
+                    
+                    string update = "update Consulta set statusConsulta='CANCELADA' where idConsulta = '" + idCancelar + "'";
+
+                    insertBD.ExecutaInsUpDel(update);
+
+                }
+
+
+                /*idReagendar = Request.QueryString["IdReagendar"];
+                if (!(idReagendar == null))
+                {
+                    String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
+
+                    // PP3ConexaoBD insertBD = new PP3ConexaoBD();
+                    // insertBD.Connection(conString);
+                    // insertBD.AbrirConexao();
+
+                    // string paciente = "";
+
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "BtnMarcarClick()", true);
+                }*/
             }
             
             if (ddl_MedicoAgenda.SelectedIndex != -1) {
@@ -122,6 +160,21 @@ namespace PP3.u.secretario
         }
 
         protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_Reagendar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_CancelarConsulta_Click(object sender, EventArgs e)
         {
 
         }

@@ -2,25 +2,35 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="../../js/jquery.min.js"></script>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <!-- Button trigger modal -->
-
+    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+    <ContentTemplate>
    <section class="probootstrap-section overlay bg-image" style="background-image: url(../../imagens/consulta3.jpg)">
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <h2 class="text-white display-4">Agebdar Novas Consultas</h2>
+          <h2 class="text-white display-4">Agendar Novas Consultas</h2>
           <p class="text-white mb-5 lead"></p>
           <div class="row justify-content-center mb-5">
             <div class="col-md-4">
-                <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#exampleModal">
-                 Marcar Consulta</button>
+                <asp:Button ID="BtnMarcar" runat="server" Text="Marcar Consulta" CssClass="btn btn-secondary btn-block BtnMarcar" data-toggle="modal" data-target="#exampleModal"/>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section> 
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    </ContentTemplate>
+    </asp:UpdatePanel>
+
+    <script>
+        function BtnMarcarClick() {
+            $('.BtnMarcar').click()
+        }
+    </script>
+    
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
     <section class="probootstrap-blog-appointment">
@@ -28,7 +38,7 @@
       <div class="row no-gutters">
         <div class="col-md-6 pr-md-5 pr-0 pt-md-5 pt-0 pb-md-5 pb-0">
           <h2 class="h1 mb-4 text-white">Consultas de:</h2><asp:DropDownList ID="ddl_MedicoAgenda" runat="server" DataSourceID="SqlMedicos" DataTextField="nome" DataValueField="idMedico" OnSelectedIndexChanged="ddl_Medico_SelectedIndexChanged" AutoPostBack="True" OnTextChanged="ddl_Medico_TextChanged" ></asp:DropDownList>
-
+            <br />
                 <asp:SqlDataSource ID="SqlAgenda" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="exec agenda @idMedico">
                     <SelectParameters>
                       <asp:ControlParameter ControlID="ddl_MedicoAgenda" Name="idMedico" PropertyName="SelectedValue" />
@@ -41,11 +51,17 @@
     <asp:SqlDataSource ID="SqlConsulta" runat="server"></asp:SqlDataSource>
     <br/>
     <asp:SqlDataSource ID="SqlMedicos" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="SELECT [idMedico], [nome] FROM [Medico]"></asp:SqlDataSource>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlAgenda" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" ShowHeaderWhenEmpty="True">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlAgenda" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" ShowHeaderWhenEmpty="True" DataKeyNames="ID">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="DataHora" HeaderText="Hora" SortExpression="DataHora" />
+            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
+            <asp:BoundField DataField="DataHora" HeaderText="DataHora" SortExpression="DataHora" />
             <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
+            <asp:TemplateField HeaderText="Cancelar">
+                <ItemTemplate>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("ID", "agenda.aspx?IdCancelar={0}") %>'><img src="../../imagens/cancel-icon.png" style="width: 50px"></img></asp:HyperLink>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -75,16 +91,15 @@
              
              
             <div class="form-group">
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlReagendar" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlReagendar" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" DataKeyNames="ID">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:BoundField DataField="Nome" HeaderText="Paciente" SortExpression="Nome" />
-                        <asp:BoundField DataField="nome1" HeaderText="Médico" SortExpression="nome1" />
+                        <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
+                        <asp:BoundField DataField="Paciente" HeaderText="Paciente" SortExpression="Paciente" />
+                        <asp:BoundField DataField="Medico" HeaderText="Medico" SortExpression="Medico" />
                         <asp:TemplateField HeaderText="Reagendar">
                             <ItemTemplate>
-                               
-                                <asp:Button ID="btn_Reagendar" runat="server"  Text="Reagendar" CssClass="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" />
-                                  
+                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# Eval("ID", "agenda.aspx?IdReagendar={0}") %>'><img src="../../imagens/reagendar-icon.png" style="width: 50px"></img></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -99,7 +114,7 @@
                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlReagendar" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select p.nome as Nome, m.nome from consulta as c, paciente as p, medico as m where m.idMedico = c.idMedico and c.idPaciente = p.idPaciente and c.statusConsulta = 'REAGENDAR'"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlReagendar" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select c.idConsulta as ID, p.nome as Paciente, m.nome as Medico from consulta as c, paciente as p, medico as m where m.idMedico = c.idMedico and c.idPaciente = p.idPaciente and c.statusConsulta = 'REAGENDAR'"></asp:SqlDataSource>
             </div>
                 
 
