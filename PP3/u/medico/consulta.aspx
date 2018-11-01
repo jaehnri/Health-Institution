@@ -42,7 +42,7 @@
             </asp:GridView>
             <asp:SqlDataSource ID="SqlConsultaAtiva" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select p.nome as Nome, c.duracao as Duração, c.dataHora as Data from Consulta as c, paciente as p where idConsulta = @idConsulta and p.idPaciente = c.idPaciente">
                 <SelectParameters>
-                    <asp:SessionParameter Name="idConsulta" SessionField="idConsulta" />
+                    <asp:QueryStringParameter Name="idConsulta" QueryStringField="IdGet" />
                 </SelectParameters>
             </asp:SqlDataSource>
             <h2 class="h1 mb-4 text-white">Próxima Consulta</h2>

@@ -12,12 +12,14 @@ namespace PP3.u.medico
 {
     public partial class consulta : System.Web.UI.Page
     {
+        string idConsulta = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["idConsulta"] = 1;
+            //Session["idConsulta"] = 1;
             //if (Session["idConsulta"].Equals("")
-            //  Response.Redirect("agenda.aspx");            
+            //  Response.Redirect("agenda.aspx");       
+            idConsulta = Request.QueryString["IdGet"];
             
         }
 
@@ -43,7 +45,7 @@ namespace PP3.u.medico
             string update = "";
             if (ck_Reagendar.Checked)
             {
-                update = "update Consulta set statusConsulta='REAGENDAR', sintomas='" + txt_Sintomas.Text + "', exames='" + txt_Exames.Text + "', medicacoes='" + txt_Medicacoes.Text + "', observacoes='" + txt_Observacoes.Text + "'  where idConsulta = '" + Session["idConsulta"].ToString() + "'";
+                update = "update Consulta set statusConsulta='REAGENDAR', sintomas='" + txt_Sintomas.Text + "', exames='" + txt_Exames.Text + "', medicacoes='" + txt_Medicacoes.Text + "', observacoes='" + txt_Observacoes.Text + "'  where idConsulta = '" + idConsulta + "'";
             }
 
             if (!ck_Reagendar.Checked)

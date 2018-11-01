@@ -45,7 +45,7 @@
                     <asp:BoundField DataField="Data" HeaderText="Data" SortExpression="Data" />
                     <asp:TemplateField HeaderText="Acessar">
                         <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink1" runat="server"><img src="../../imagens/doctor-icon.png" style="width: 50px"></img></asp:HyperLink>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("ID", "consulta.aspx?IdGet={0}") %>'><img src="../../imagens/doctor-icon.png" style="width: 50px"></img></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
