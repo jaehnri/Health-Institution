@@ -26,16 +26,8 @@
           <h2 class="h1 mb-4 text-white">Consultas Próximas:</h2>
             <div class="row">
                 <center>
-            <asp:GridView ID="grd_ConsultasProximas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlProxConsultas" ForeColor="#333333" GridLines="None" HorizontalAlign="Left" OnSelectedIndexChanged="grd_ConsultasProximas_SelectedIndexChanged" ShowHeaderWhenEmpty="True">
+            <asp:GridView ID="GridView1" runat="server" CellPadding="4" DataSourceID="SqlProxConsultas" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
-                <Columns>
-                    
-                    
-                    <asp:BoundField DataField="Médico" HeaderText="Médico" SortExpression="Médico" />
-                    <asp:BoundField DataField="Paciente" HeaderText="Paciente" SortExpression="Paciente" />
-                   <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                    <asp:BoundField DataField="Data" HeaderText="Data" SortExpression="Data" />
-                </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -46,7 +38,7 @@
                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
-            </asp:GridView>
+                    </asp:GridView>
 
             <asp:SqlDataSource ID="SqlProxConsultas" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="exec proxConsultas"></asp:SqlDataSource>
             </center>

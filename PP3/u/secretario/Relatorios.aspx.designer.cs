@@ -13,6 +13,15 @@ namespace PP3.u.secretario {
     public partial class Relatorios {
         
         /// <summary>
+        /// Controle SqlGraficoPacientePorMedico.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlGraficoPacientePorMedico;
+        
+        /// <summary>
         /// Controle Chart1.
         /// </summary>
         /// <remarks>
@@ -22,12 +31,12 @@ namespace PP3.u.secretario {
         protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
         
         /// <summary>
-        /// Controle SqlGraficoPacientePorMedico.
+        /// Controle Chart2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlGraficoPacientePorMedico;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart2;
     }
 }

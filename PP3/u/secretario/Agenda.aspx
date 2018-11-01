@@ -1,4 +1,4 @@
-﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/u/secretario/secretario.Master" AutoEventWireup="true" CodeBehind="Agenda.aspx.cs" Inherits="PP3.u.secretario.Agenda" %>
+﻿  <%@ Page Title="" Language="C#" MasterPageFile="~/u/secretario/secretario.Master" AutoEventWireup="true" CodeBehind="Agenda.aspx.cs" Inherits="PP3.u.secretario.Agenda" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -216,9 +216,10 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
          <asp:button runat="server" text="Marcar" class="btn btn-secondary" type=" button" ID="btn_MarcarConsulta" OnClick="btn_MarcarConsulta_Click"/>
       </div>
-    </div> 
-    </ContentTemplate>
+            </ContentTemplate>
     </asp:UpdatePanel>
+    </div> 
+    
   </div>
 </div>
 
