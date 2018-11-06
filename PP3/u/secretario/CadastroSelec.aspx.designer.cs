@@ -22,15 +22,6 @@ namespace PP3.u.secretario {
         protected global::System.Web.UI.WebControls.Button btnCadastrar_Paciente;
         
         /// <summary>
-        /// Controle btnCadastrar_Medico.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCadastrar_Medico;
-        
-        /// <summary>
         /// Controle btnCadastrar_Secretario.
         /// </summary>
         /// <remarks>
@@ -38,5 +29,14 @@ namespace PP3.u.secretario {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCadastrar_Secretario;
+        
+        /// <summary>
+        /// Controle btnCadastrar_Medico.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCadastrar_Medico;
     }
 }

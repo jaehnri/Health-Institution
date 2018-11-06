@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:SqlDataSource ID="SqlGraficoPacientePorMedico" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select m.nome as Medico, count(distinct idPaciente) as Pacientes from Consulta as c, Medico as m where m.idMedico = c.idMedico and c.statusConsulta != 'CANCELADA' group by m.nome"></asp:SqlDataSource>
+    &nbsp;<asp:SqlDataSource ID="SqlGraficoPacientePorMedico" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select m.nome as Medico, count(distinct idPaciente) as Pacientes from Consulta as c, Medico as m where m.idMedico = c.idMedico and c.statusConsulta != 'CANCELADA' group by m.nome"></asp:SqlDataSource>
 
 <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlGraficoPacientePorMedico">
     <Series>
@@ -18,7 +18,7 @@
     </ChartAreas>
 </asp:Chart>
 
-    <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlGraficoPizza">
+    <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlGraficoPizza" Palette="None" PaletteCustomColors="51, 51, 204; RoyalBlue; 0, 0, 102; 51, 51, 150; DeepSkyBlue">
         <Series>
             <asp:Series Name="Series1" ChartType="Pie" XValueMember="nome" YValueMembers="Column1">
             </asp:Series>
@@ -30,6 +30,7 @@
     </asp:Chart>
 
     <asp:SqlDataSource ID="SqlGraficoPizza" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select count(idConsulta), e.nome from especialidade as e, consulta as c, medico as m where c.idMedico = m.idMedico AND m.idEspecialidade = e.idEspecialidade AND day(c.dataHora) = day(GETDATE()) group by e.nome"></asp:SqlDataSource>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Chart ID="Chart3" runat="server" DataSourceID="SqlGraficoMensalMedico">
         <Series>
             <asp:Series Name="Series1" XValueMember="nome" YValueMembers="Column1">
