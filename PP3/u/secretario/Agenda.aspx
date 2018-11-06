@@ -24,12 +24,6 @@
   </section> 
     </ContentTemplate>
     </asp:UpdatePanel>
-
-    <script>
-        function BtnMarcarClick() {
-            $('.BtnMarcar').click()
-        }
-    </script>
     
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -222,6 +216,12 @@
     
   </div>
 </div>
+    <script src="../../js/bootstrap.js"></script>
+    <script>
+        function AbrirModal() {
+            $('#exampleModal').modal('show');
+        }
+    </script>
 
     
     

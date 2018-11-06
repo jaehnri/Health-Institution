@@ -19,13 +19,6 @@ namespace PP3.u.secretario
         DateTime data;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            for (int i = 0; i < GridView2.Rows.Count; i++)
-            {
-                GridView2.Rows[i].Cells[3].Attributes.Add("data-target", "\"#exampleModal\"");
-                GridView2.Rows[i].Cells[3].Attributes.Add("data-toggle", "\"modal\"");
-            }
-
             if (!Page.IsPostBack)
             {
                 cal_data.SelectedDate = DateTime.Now.Date;
@@ -42,11 +35,10 @@ namespace PP3.u.secretario
                     string update = "update Consulta set statusConsulta='CANCELADA' where idConsulta = '" + idCancelar + "'";
 
                     insertBD.ExecutaInsUpDel(update);
-
                 }
 
 
-                /*idReagendar = Request.QueryString["IdReagendar"];
+                idReagendar = Request.QueryString["IdReagendar"];
                 if (!(idReagendar == null))
                 {
                     String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
@@ -57,8 +49,36 @@ namespace PP3.u.secretario
 
                     // string paciente = "";
 
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "BtnMarcarClick()", true);
-                }*/
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "AbrirModal()", true);
+
+                    lbl_Mensagem.Text = "Reagendar consulta:";
+
+                    PP3ConexaoBD acessoBD = new PP3ConexaoBD();
+                    acessoBD.Connection(conString);
+                    acessoBD.AbrirConexao();
+
+                    string select = "select m.idMedico as Medico from consulta as c, medico as m where m.idMedico = c.idMedico and c.idConsulta = " + idReagendar.ToString();
+                    string idMedico = acessoBD.RetornaDados(select).GetInt32(0).ToString();
+                    acessoBD.FecharConexao();
+
+                    PP3ConexaoBD acessoBDPaciente = new PP3ConexaoBD();
+                    acessoBDPaciente.Connection(conString);
+                    acessoBDPaciente.AbrirConexao();
+                    select = "select p.idPaciente as Paciente from consulta as c, Paciente as p where p.idPaciente = c.idPaciente and c.idConsulta = " + idReagendar.ToString();
+                    string idPaciente = acessoBDPaciente.RetornaDados(select).GetInt32(0).ToString();
+                    acessoBDPaciente.FecharConexao();
+
+
+                    ddl_MedicoConsulta.SelectedValue = idMedico;
+                    ddl_Paciente.SelectedValue = idPaciente;
+
+                    ddl_MedicoConsulta.Enabled = false;
+                    ddl_Paciente.Enabled = false;
+
+
+                    //lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
+
+                }
             }
             
             if (ddl_MedicoAgenda.SelectedIndex != -1) {
@@ -81,9 +101,9 @@ namespace PP3.u.secretario
             String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
             string dataHora = cal_data.SelectedDate.ToString();
             dataHora = dataHora.Substring(0, 11);
-            dataHora += txt_hora.Text + ":00";
+            dataHora += txt_hora.Text + ":00";          
 
-            if(txt_hora.Text.Equals(""))
+            if (txt_hora.Text.Equals(""))
             {
                 lbl_Mensagem.Attributes["style"] = "color:maroon; font-weight:bold;";
                 lbl_Mensagem.Text = "Determine uma hora.";
@@ -112,15 +132,39 @@ namespace PP3.u.secretario
                 return;
             }
 
+            if ((idReagendar == null))
+            {
+                PP3ConexaoBD insertBD = new PP3ConexaoBD();
+                insertBD.Connection(conString);
+                insertBD.AbrirConexao();
+                string insert = "Insert into Consulta values ( " + ddl_MedicoConsulta.SelectedValue + ", " + ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', NULL, NULL, NULL, NULL, NULL)";
+                insertBD.ExecutaInsUpDel(insert);
+                lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
+                lbl_Mensagem.Text = "Consulta marcada com sucesso!";
+            }
 
+            if (!(idReagendar == null))
+            {
+                PP3ConexaoBD reagendarBD = new PP3ConexaoBD();
+                reagendarBD.Connection(conString);
+                reagendarBD.AbrirConexao();
 
-            PP3ConexaoBD insertBD = new PP3ConexaoBD();
-            insertBD.Connection(conString);           
-            insertBD.AbrirConexao();
-            string insert = "Insert into Consulta values ( "+ ddl_MedicoConsulta.SelectedValue + ", "+ ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', NULL, NULL, NULL, NULL, NULL)";
-            insertBD.ExecutaInsUpDel(insert);
-            lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
-            lbl_Mensagem.Text = "Consulta marcada com sucesso!";
+                string finalizarConsulta = "update Consulta set statusConsulta = 'FINALIZADA' where idConsulta = '" + idReagendar + "'";
+                reagendarBD.ExecutaInsUpDel(finalizarConsulta);
+                reagendarBD.FecharConexao();
+                
+
+                PP3ConexaoBD finalizarBD = new PP3ConexaoBD();
+                finalizarBD.Connection(conString);
+                finalizarBD.AbrirConexao();
+
+                string insertReagendar = "Insert into Consulta values ( " + ddl_MedicoConsulta.SelectedValue + ", " + ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', NULL, NULL, NULL, NULL, NULL)";
+                finalizarBD.ExecutaInsUpDel(insertReagendar);
+                finalizarBD.FecharConexao();
+
+                lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
+                lbl_Mensagem.Text = "Consulta reagendada com sucesso!";
+            }
         }
 
         protected bool existeConsulta(string dataHora)
