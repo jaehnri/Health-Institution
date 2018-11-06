@@ -22,8 +22,8 @@ namespace PP3.u.secretario
 
             for (int i = 0; i < GridView2.Rows.Count; i++)
             {
-                GridView2.Rows[i].Cells[2].Attributes.Add("data-target", "\"#exampleModal\"");
-                GridView2.Rows[i].Cells[2].Attributes.Add("data-toggle", "\"modal\"");
+                GridView2.Rows[i].Cells[3].Attributes.Add("data-target", "\"#exampleModal\"");
+                GridView2.Rows[i].Cells[3].Attributes.Add("data-toggle", "\"modal\"");
             }
 
             if (!Page.IsPostBack)
