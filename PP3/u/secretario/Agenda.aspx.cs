@@ -14,13 +14,14 @@ namespace PP3.u.secretario
     public partial class Agenda : System.Web.UI.Page
     {
         string idCancelar = "";
-        string idReagendar = "";
+        string idReagendar;
 
         DateTime data;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+                
                 cal_data.SelectedDate = DateTime.Now.Date;
 
                 idCancelar = Request.QueryString["IdCancelar"];
@@ -84,6 +85,9 @@ namespace PP3.u.secretario
             if (ddl_MedicoAgenda.SelectedIndex != -1) {
                 //lbl_Medico.Text = ddl_Medico.Items[ddl_Medico.SelectedIndex].Text;
             }
+
+            UpdatePanel1.UpdateMode = UpdatePanelUpdateMode.Conditional;
+
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -132,6 +136,7 @@ namespace PP3.u.secretario
                 return;
             }
 
+            idReagendar = Request.QueryString["IdReagendar"];
             if ((idReagendar == null))
             {
                 PP3ConexaoBD insertBD = new PP3ConexaoBD();
@@ -149,7 +154,7 @@ namespace PP3.u.secretario
                 reagendarBD.Connection(conString);
                 reagendarBD.AbrirConexao();
 
-                string finalizarConsulta = "update Consulta set statusConsulta = 'FINALIZADA' where idConsulta = '" + idReagendar + "'";
+                string finalizarConsulta = "update Consulta set statusConsulta='FINALIZADA' where idConsulta = '" + idReagendar + "'";
                 reagendarBD.ExecutaInsUpDel(finalizarConsulta);
                 reagendarBD.FecharConexao();
                 
@@ -165,6 +170,8 @@ namespace PP3.u.secretario
                 lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
                 lbl_Mensagem.Text = "Consulta reagendada com sucesso!";
             }
+            
+            UpdatePanel1.Update();
         }
 
         protected bool existeConsulta(string dataHora)
