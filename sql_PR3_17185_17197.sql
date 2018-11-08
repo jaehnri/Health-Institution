@@ -172,3 +172,4 @@ drop table exame
 
 
 
+select c.idConsulta as ID, m.nome as Medico, c.sintomas as Sintomas, c.exames as Exames, c. medicacoes as Medicações, c.observacoes as Observações from consulta as c, paciente as p, medico as m where m.idMedico = c.idMedico and c.idPaciente = p.idPaciente and p.nome = @nomePaciente and c.statusConsulta != 'PENDENTE' and c.statusConsulta != 'SOLICITACAO' and c.statusConsulta != 'CANCELADA'

@@ -14,7 +14,7 @@ namespace PP3.u.medico
             if (Session["username"] == "" || Session.IsNewSession)
                 Response.Redirect("../../index.aspx");
 
-            Username.Text = Session["username"].ToString();
+            Username.Text = "LOGOFF "+ "("+Session["username"].ToString()+")";
         }
     }
 }

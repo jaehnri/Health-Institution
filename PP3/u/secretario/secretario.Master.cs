@@ -14,7 +14,7 @@ namespace PP3.u.secretario
             if (Session["username"].Equals("") || Session.IsNewSession)
                 Response.Redirect("../../index.aspx");
 
-            Username.Text = Session["username"].ToString();
+            Username.Text = "LOGOFF " + "(" + Session["username"].ToString() + ")";
         }
     }
 }

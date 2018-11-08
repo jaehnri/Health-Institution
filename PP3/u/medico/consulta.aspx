@@ -45,22 +45,8 @@
                     <asp:QueryStringParameter Name="idConsulta" QueryStringField="IdGet" />
                 </SelectParameters>
             </asp:SqlDataSource>
-            <h2 class="h1 mb-4 text-white">Próxima Consulta</h2>
-            <asp:GridView ID="GridView2" runat="server" CellPadding="4" DataSourceID="SqlProxConsulta" ForeColor="#333333" GridLines="None">
-                <AlternatingRowStyle BackColor="White" />
-                <EditRowStyle BackColor="#2461BF" />
-                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#EFF3FB" />
-                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                <SortedDescendingHeaderStyle BackColor="#4870BE" />
-            </asp:GridView>
-            <asp:SqlDataSource ID="SqlProxConsulta" runat="server"></asp:SqlDataSource>
-          <p><a href="#" class="arrow-link">Ver todas  <i class="icon-chevron-right"></i></a></p>
+            <br />
+          <p><a href="agenda.aspx" class="arrow-link">Ver todas  <i class="icon-chevron-right"></i></a></p>
         </div>
 
         <div class="col-md-6 p-md-5 p-3 probootstrap-aside-stretch-right">
