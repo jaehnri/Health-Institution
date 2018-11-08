@@ -2,12 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-          <form action="#" method="get" class="probootstrap-search-form mb-sm-0 mb-3">
-            <div class="form-group">
-            </div>
-          </form>
-
   <section class="mb-5">
     <div class="container">
       <div class="row">
@@ -44,7 +38,7 @@
           <h1 class="mt-4 mb-4">Entre em contato já!</h1>
           <div class="row">
             <div class="col-md-12">
-              <form action="" method="post" class="probootstrap-form">
+              <div method="post" class="probootstrap-form">
                 <div class="form-group">
                   <label for="name" class="sr-only">Name</label>
                   <asp:textbox runat="server" class="form-control" id="txt_NomeContato" type="text" placeholder="Digite seu nome"></asp:textbox>
@@ -61,7 +55,7 @@
                 <div class="form-group">
                   <input type="submit" class="btn btn-primary" value="Enviar Mensagem">
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
