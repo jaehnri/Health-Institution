@@ -11,7 +11,7 @@ namespace PP3.u.secretario
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] == "" || Session.IsNewSession)
+            if (Session["username"].Equals("") || Session.IsNewSession)
                 Response.Redirect("../../index.aspx");
 
             Username.Text = Session["username"].ToString();

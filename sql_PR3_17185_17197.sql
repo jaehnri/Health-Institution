@@ -136,7 +136,7 @@ select * from Especialidade
 select * from Medico
 select * from Exame
 
-update Consulta set sintomas = 'cisto na bola', exames='ultrassom de bola' where idConsulta = 1
+update Consulta set avaliacao = NULL where idConsulta = 2
 
 
 insert into Especialidade values ('Pediatra')
