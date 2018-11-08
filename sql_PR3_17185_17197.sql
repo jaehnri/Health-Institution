@@ -167,7 +167,17 @@ drop table exame
 
 
 
-
+create table SolicitacaoDeConsulta
+(
+	idSolicitacao int identity(1, 1) primary key,
+	idPaciente int not null,
+	statusConsulta varchar(15) not null,
+	sintomas ntext,
+	exames ntext,
+	medicacoes ntext,
+	observacoes ntext,
+	Constraint FRK_idPaciente foreign key (idPaciente) references Paciente(idPaciente),
+)
 
 
 
