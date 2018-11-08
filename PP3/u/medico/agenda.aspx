@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
-
+<br />
  <section class="probootstrap-features-1">
     <div class="container">
       <div class="row">
@@ -70,41 +70,5 @@
       </div>
     </div>
   </section>
-    <br />
-    <footer class="probootstrap-footer">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-3">
-          <h3 class="heading">Sede da Instituição</h3>
-          <p class="mb-5">R. Jorge de Figueiredo Corrêa, 735 - Chácara Primavera, Campinas - SP, 13087-261 </p>
-          <h3 class="heading text-white">Abertura</h3> 
-          <p>
-            Seg-Sex 7:30-18:00 <br>
-            Sab 7:30-18:00 <br>
-            Dom 7:30-18:00
-          </p>
-        </div>
-        <div class="col-md-3">
-          <h3 class="heading">Links Rápidos</h3>
-          <ul class="list-unstyled probootstrap-footer-links">
-            <li><a href="index.aspx">Home</a></li>
-            <li><a href="medico.aspx">Médico</a></li>
-            <li><a href="paciente.aspx">Paciente</a></li>
-            <li><a href="secretaria.aspx">Secretaria</a></li>
-            <li><a href="LoginSelec.aspx">Entrar</a></li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <h3 class="heading">Siga-nos</h3>
-          <ul class="list-unstyled probootstrap-footer-links">
-            <li><a href="https://twitter.com/jaohenrii">João Henri</a></li>
-            <li><a href="https://twitter.com/NicholasPatapo1">Nicholas Patapoff</a></li>
-            <li><a href="https://twitter.com/littleheadfilms">LH Films</a></li>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
 
 </asp:Content>

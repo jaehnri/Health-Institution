@@ -20,7 +20,8 @@ namespace PP3.u.medico
             //if (Session["idConsulta"].Equals("")
             //  Response.Redirect("agenda.aspx");       
             idConsulta = Request.QueryString["IdGet"];
-            
+            if (idConsulta == null)
+                Response.Redirect("agenda.aspx");
         }
 
         protected void btn_EnviarConsulta_Click(object sender, EventArgs e)

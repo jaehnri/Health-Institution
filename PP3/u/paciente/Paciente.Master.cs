@@ -11,7 +11,10 @@ namespace PP3.u.paciente
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"] == "" || Session.IsNewSession)
+                Response.Redirect("../../index.aspx");
 
+            Username.Text = "LOGOFF " + "(" + Session["username"].ToString() + ")";
         }
     }
 }
