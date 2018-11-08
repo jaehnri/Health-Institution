@@ -12,13 +12,13 @@
     <asp:Panel ID="Panel1" runat="server">
 <div class="col">
             <div class="box box-blue box-example-movie">
-              <div class="box-header">Avalie a sua consulta</div>
+              <div class="box-header">Avalie a sua consulta com <asp:Label ID="lbl_medico" runat="server" Text="Label"></asp:Label></div>
               <div class="box-body">
                   
                 <div class="br-wrapper br-theme-bars-movie">
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                    <asp:DropDownList ID="example_movie" runat="server" name="rating" Style="display: none;" AutoPostBack="True" OnSelectedIndexChanged="example_movie_SelectedIndexChanged">
+                    <asp:DropDownList ID="example_movie" runat="server" name="rating" Style="display: none;" AutoPostBack="false">
                         <asp:ListItem Value="Ruim">Ruim</asp:ListItem>
                         <asp:ListItem Value="Mediocre">Medíocre</asp:ListItem>
                         <asp:ListItem Value="Boa" Selected="true">Boa</asp:ListItem>
@@ -31,14 +31,25 @@
                        <a href="#" data-rating-value="Mediocre" data-rating-text="Medíocre" class="br-selected br-current"></a>
                        <a href="#" data-rating-value="Boa" data-rating-text="Boa"></a>
                        <a href="#" data-rating-value="Excelente" data-rating-text="Excelente" class=""></a>
-                      <div class="br-current-rating"></div></div>              
+                      <div class="br-current-rating"></div></div>   
+                     <br/>
+                  <br/>         
                     </div>
+                  <br/>
+                  <br/>
+                  <center>
+                    <asp:Button ID="btn_Avaliar" CssClass ="btn btn-primary" runat="server" Text="Button" OnClick="btn_Avaliar_Click" />
+                  </center>
               </div>
+                
                 
             </div>
           </div>
         </asp:Panel>
-          
+         <br/> 
+    <br/> 
+    <br/> 
+    <br/> 
     <script src="../../js/jquery.min.js"></script>
 <script src="../../js/jquery.barrating.min.js"></script>
     <script>
