@@ -110,6 +110,9 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlReagendar" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select c.idConsulta as ID, p.nome as Paciente, m.nome as Medico from consulta as c, paciente as p, medico as m where m.idMedico = c.idMedico and c.idPaciente = p.idPaciente and c.statusConsulta = 'REAGENDAR'"></asp:SqlDataSource>
             </div>
+
+              <h2 class="h1 text-white">Novas Solicitações de Consultas:</h2>
+
                 
 
          
