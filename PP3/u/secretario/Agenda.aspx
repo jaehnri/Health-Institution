@@ -77,11 +77,8 @@
           <p><a href="#" class="arrow-link">View All <i class="icon-chevron-right"></i></a></p>
         </div>
         <div class="col-md-6 p-md-5 p-3 probootstrap-aside-stretch-right">
-          <h2 class="h1 text-white">Consultas a reagendar</h2>
+          <h2 class="h1 text-white">Consultas a reagendar:</h2>
           <form action="#" class="probootstrap-form-appointment">
-            <div class="form-group">
-            </div>
-
              
              
             <div class="form-group">
@@ -110,10 +107,38 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlReagendar" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select c.idConsulta as ID, p.nome as Paciente, m.nome as Medico from consulta as c, paciente as p, medico as m where m.idMedico = c.idMedico and c.idPaciente = p.idPaciente and c.statusConsulta = 'REAGENDAR'"></asp:SqlDataSource>
             </div>
-
+              <br /> <br />
               <h2 class="h1 text-white">Novas Solicitações de Consultas:</h2>
 
-                
+                <div class="form-group">
+                    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" CellPadding="3" DataKeyNames="ID" DataSourceID="SqlSolicitacoes" ForeColor="#333333" GridLines="None">
+                        <AlternatingRowStyle BackColor="White" />
+                        <Columns>
+                            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                            <asp:BoundField DataField="Paciente" HeaderText="Paciente" SortExpression="Paciente" />
+                            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                            <asp:BoundField DataField="Telefone" HeaderText="Telefone" SortExpression="Telefone" />
+                            <asp:BoundField DataField="Sintomas" HeaderText="Sintomas" SortExpression="Sintomas" />
+                            <asp:BoundField DataField="Exames" HeaderText="Exames" SortExpression="Exames" />
+                            <asp:TemplateField HeaderText="Agendar">
+                                <ItemTemplate>
+                                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl='<%# Eval("ID", "agenda.aspx?IdAgendar={0}") %>'><img src="../../imagens/agendar-icon.png" style="width: 50px"></img></asp:HyperLink>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="SqlSolicitacoes" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select s.idSolicitacao as ID, p.nome as Paciente, p.email as Email, p.telefone as Telefone, s.sintomas as Sintomas, s.exames as Exames from paciente as p, solicitacaodeconsulta as s where s.statusConsulta = 'SOLICITACAO' and p.idPaciente = s.idPaciente"></asp:SqlDataSource>
+                </div>
 
          
           </form>

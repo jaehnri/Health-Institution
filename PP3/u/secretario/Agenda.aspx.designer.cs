@@ -130,6 +130,24 @@ namespace PP3.u.secretario {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlReagendar;
         
         /// <summary>
+        /// Controle GridView3.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView3;
+        
+        /// <summary>
+        /// Controle SqlSolicitacoes.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlSolicitacoes;
+        
+        /// <summary>
         /// Controle UpdatePanel2.
         /// </summary>
         /// <remarks>

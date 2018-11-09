@@ -128,6 +128,8 @@
     <Content Include="css\owl.carousel.min.css" />
     <Content Include="css\owl.theme.default.min.css" />
     <Content Include="imagens\agenda.jpg" />
+    <Content Include="imagens\agendar-icon.png" />
+    <Content Include="imagens\cancel-icon.png" />
     <Content Include="imagens\consulta.jpg" />
     <Content Include="imagens\consulta1.jpg" />
     <Content Include="imagens\consulta2.jpg" />
@@ -135,6 +137,7 @@
     <Content Include="imagens\criancamedico.jpg" />
     <Content Include="imagens\criancamedico2.jpg" />
     <Content Include="imagens\crianca.jpeg" />
+    <Content Include="imagens\doctor-icon.png" />
     <Content Include="imagens\doctor.jpg" />
     <Content Include="imagens\graficos.jpg" />
     <Content Include="imagens\healthcaring.png" />

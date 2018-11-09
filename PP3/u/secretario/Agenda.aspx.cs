@@ -15,6 +15,7 @@ namespace PP3.u.secretario
     {
         string idCancelar = "";
         string idReagendar;
+        string idAgendar;
 
         DateTime data;
         protected void Page_Load(object sender, EventArgs e)
@@ -80,6 +81,38 @@ namespace PP3.u.secretario
                     //lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
 
                 }
+
+                idAgendar = Request.QueryString["IdAgendar"];
+                if (!(idAgendar == null))
+                {
+                    String conString = WebConfigurationManager.ConnectionStrings["PP3conexaoBD"].ConnectionString;
+
+                    // PP3ConexaoBD insertBD = new PP3ConexaoBD();
+                    // insertBD.Connection(conString);
+                    // insertBD.AbrirConexao();
+
+                    // string paciente = "";
+
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "AbrirModal()", true);
+
+                    lbl_Mensagem.Text = "Agendar consulta solicitada:";
+
+                    PP3ConexaoBD acessoBD = new PP3ConexaoBD();
+                    acessoBD.Connection(conString);
+                    acessoBD.AbrirConexao();
+
+                    string select = "select p.idPaciente as Paciente from Paciente as p, solicitacaodeconsulta as s where p.idPaciente = s.idPaciente and s.idSolicitacao = " + idAgendar.ToString();
+                    string idPaciente = acessoBD.RetornaDados(select).GetInt32(0).ToString();
+                    acessoBD.FecharConexao();
+
+                    ddl_Paciente.SelectedValue = idPaciente;
+
+                    ddl_Paciente.Enabled = false;
+
+
+                    //lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
+
+                }
             }
             
             if (ddl_MedicoAgenda.SelectedIndex != -1) {
@@ -137,7 +170,8 @@ namespace PP3.u.secretario
             }
 
             idReagendar = Request.QueryString["IdReagendar"];
-            if ((idReagendar == null))
+            idAgendar = Request.QueryString["IdAgendar"];
+            if ((idReagendar == null) || (idAgendar == null))
             {
                 PP3ConexaoBD insertBD = new PP3ConexaoBD();
                 insertBD.Connection(conString);
@@ -170,7 +204,30 @@ namespace PP3.u.secretario
                 lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
                 lbl_Mensagem.Text = "Consulta reagendada com sucesso!";
             }
-            
+
+            if (!(idAgendar == null))
+            {
+                PP3ConexaoBD agendarBD = new PP3ConexaoBD();
+                agendarBD.Connection(conString);
+                agendarBD.AbrirConexao();
+
+                string finalizarSolicitacao= "update SolicitacaoDeConsulta set statusConsulta='AGENDADA' where idSolicitacao = '" + idAgendar + "'";
+                agendarBD.ExecutaInsUpDel(finalizarSolicitacao);
+                agendarBD.FecharConexao();
+
+
+                PP3ConexaoBD finalizarBD = new PP3ConexaoBD();
+                finalizarBD.Connection(conString);
+                finalizarBD.AbrirConexao();
+
+                string insertAgendar = "Insert into Consulta values ( " + ddl_MedicoConsulta.SelectedValue + ", " + ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', NULL, NULL, NULL, NULL, NULL)";
+                finalizarBD.ExecutaInsUpDel(insertAgendar);
+                finalizarBD.FecharConexao();
+
+                lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
+                lbl_Mensagem.Text = "Solicitação agendada com sucesso!";
+            }
+
             UpdatePanel1.Update();
         }
 
