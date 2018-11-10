@@ -174,6 +174,7 @@
     <Content Include="u\paciente\index.aspx" />
     <Content Include="u\secretario\Agenda.aspx" />
     <Content Include="u\secretario\CadastroSelec.aspx" />
+    <Content Include="u\secretario\Historico.aspx" />
     <Content Include="u\secretario\index.aspx" />
     <Content Include="u\secretario\Relatorios.aspx" />
     <Content Include="u\secretario\secretario.Master" />
@@ -345,6 +346,13 @@
     </Compile>
     <Compile Include="u\secretario\CadastroSelec.aspx.designer.cs">
       <DependentUpon>CadastroSelec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="u\secretario\Historico.aspx.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="u\secretario\Historico.aspx.designer.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
     </Compile>
     <Compile Include="u\secretario\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
