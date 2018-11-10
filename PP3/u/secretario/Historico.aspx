@@ -43,8 +43,8 @@
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                        <asp:BoundField DataField="Data" HeaderText="Data" SortExpression="Data" />
                         <asp:BoundField DataField="Medico" HeaderText="Medico" SortExpression="Medico" />
-                        <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                         <asp:BoundField DataField="Exames" HeaderText="Exames" SortExpression="Exames" />
                         <asp:BoundField DataField="Medicações" HeaderText="Medicações" SortExpression="Medicações" />
                         <asp:BoundField DataField="Observações" HeaderText="Observações" SortExpression="Observações" />
@@ -60,7 +60,8 @@
                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlHistorico" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select c.idConsulta as ID, m.nome as Medico, c.statusConsulta as Status, c.exames as Exames,  c. medicacoes as Medicações, c.observacoes as Observações from consulta as c, paciente as p, medico as m where c.idPaciente = @idPaciente  and statusConsulta != 'PENDENTE'">
+                <asp:SqlDataSource ID="SqlHistorico" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select c.idConsulta as 'ID', dataHora as Data, m.nome as Medico, c.exames as Exames, c.medicacoes as Medicações, c.Observacoes as Observações from consulta as c, paciente as p, medico as m where c.idPaciente = @idPaciente and m.idMedico = c.idMedico and p.idPaciente = @idPaciente and c.statusConsulta != 'PENDENTE' and c.statusConsulta != 'CANCELADA'
+">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddl_Paciente" Name="idPaciente" PropertyName="SelectedValue" />
                     </SelectParameters>
