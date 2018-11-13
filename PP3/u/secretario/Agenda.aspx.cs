@@ -171,12 +171,12 @@ namespace PP3.u.secretario
 
             idReagendar = Request.QueryString["IdReagendar"];
             idAgendar = Request.QueryString["IdAgendar"];
-            if ((idReagendar == null) || (idAgendar == null))
+            if ((idReagendar == null) && (idAgendar == null))
             {
                 PP3ConexaoBD insertBD = new PP3ConexaoBD();
                 insertBD.Connection(conString);
                 insertBD.AbrirConexao();
-                string insert = "Insert into Consulta values ( " + ddl_MedicoConsulta.SelectedValue + ", " + ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', NULL, NULL, NULL, NULL, NULL)";
+                string insert = "Insert into Consulta values ( " + ddl_MedicoConsulta.SelectedValue + ", " + ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', 'NENHUMA', NULL, NULL, NULL, NULL)";
                 insertBD.ExecutaInsUpDel(insert);
                 lbl_Mensagem.Attributes["style"] = "color:#009933; font-weight:bold;";
                 lbl_Mensagem.Text = "Consulta marcada com sucesso!";
@@ -197,7 +197,7 @@ namespace PP3.u.secretario
                 finalizarBD.Connection(conString);
                 finalizarBD.AbrirConexao();
 
-                string insertReagendar = "Insert into Consulta values ( " + ddl_MedicoConsulta.SelectedValue + ", " + ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', NULL, NULL, NULL, NULL, NULL)";
+                string insertReagendar = "Insert into Consulta values ( " + ddl_MedicoConsulta.SelectedValue + ", " + ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', 'NENHUMA', NULL, NULL, NULL, NULL)";
                 finalizarBD.ExecutaInsUpDel(insertReagendar);
                 finalizarBD.FecharConexao();
 
@@ -220,7 +220,7 @@ namespace PP3.u.secretario
                 finalizarBD.Connection(conString);
                 finalizarBD.AbrirConexao();
 
-                string insertAgendar = "Insert into Consulta values ( " + ddl_MedicoConsulta.SelectedValue + ", " + ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', NULL, NULL, NULL, NULL, NULL)";
+                string insertAgendar = "Insert into Consulta values ( " + ddl_MedicoConsulta.SelectedValue + ", " + ddl_Paciente.SelectedValue + ", '" + dataHora + "', '" + ddl_duracao.Text + "', 'PENDENTE', 'NENHUMA', NULL, NULL, NULL, NULL)";
                 finalizarBD.ExecutaInsUpDel(insertAgendar);
                 finalizarBD.FecharConexao();
 

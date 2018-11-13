@@ -48,6 +48,7 @@
                         <asp:BoundField DataField="Exames" HeaderText="Exames" SortExpression="Exames" />
                         <asp:BoundField DataField="Medicações" HeaderText="Medicações" SortExpression="Medicações" />
                         <asp:BoundField DataField="Observações" HeaderText="Observações" SortExpression="Observações" />
+                        <asp:BoundField DataField="Avaliação" HeaderText="Avaliação" SortExpression="Avaliação" />
                     </Columns>
                     <EditRowStyle BackColor="#2461BF" />
                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -60,8 +61,7 @@
                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlHistorico" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select c.idConsulta as 'ID', dataHora as Data, m.nome as Medico, c.exames as Exames, c.medicacoes as Medicações, c.Observacoes as Observações from consulta as c, paciente as p, medico as m where c.idPaciente = @idPaciente and m.idMedico = c.idMedico and p.idPaciente = @idPaciente and c.statusConsulta != 'PENDENTE' and c.statusConsulta != 'CANCELADA'
-">
+                <asp:SqlDataSource ID="SqlHistorico" runat="server" ConnectionString="<%$ ConnectionStrings:PP3ConexaoBD %>" SelectCommand="select c.idConsulta as 'ID', dataHora as Data, m.nome as Medico, c.exames as Exames, c.medicacoes as Medicações, c.Observacoes as Observações, c.avaliacao as Avaliação from consulta as c, paciente as p, medico as m where c.idPaciente = @idPaciente and m.idMedico = c.idMedico and p.idPaciente = @idPaciente and c.statusConsulta != 'PENDENTE' and c.statusConsulta != 'CANCELADA'">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddl_Paciente" Name="idPaciente" PropertyName="SelectedValue" />
                     </SelectParameters>

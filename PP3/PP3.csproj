@@ -121,9 +121,13 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="css\ajax-loader.gif" />
     <Content Include="css\animate.css" />
+    <Content Include="css\bars-movie.css" />
     <Content Include="css\bootstrap-grid.css.map" />
+    <Content Include="css\examples.css" />
     <Content Include="css\flaticon.css" />
     <Content Include="css\icomoon.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\normalize.min.css" />
     <Content Include="css\open-iconic-bootstrap.min.css" />
     <Content Include="css\owl.carousel.min.css" />
     <Content Include="css\owl.theme.default.min.css" />

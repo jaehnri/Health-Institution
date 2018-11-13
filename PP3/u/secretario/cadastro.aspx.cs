@@ -56,13 +56,13 @@ namespace PP3.u.secretario
             string cadastro;
 
             if (Session["cadastro"].Equals("medico"))
-                cadastro = "insert into medico values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + "' ,"+ ddl_Especialidades.SelectedValue +")";
+                cadastro = "insert into medico values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_Senha.Text) + "', '" + txt_Telefone.Text + "' ,"+ ddl_Especialidades.SelectedValue +")";
 
             else if (Session["cadastro"].Equals("paciente"))
-                cadastro = "insert into paciente values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + ")";
+                cadastro = "insert into paciente values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_Senha.Text) + "', '" + txt_Telefone.Text + ")";
 
             else 
-                cadastro = "insert into secretaria values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + txt_Senha.Text + "', '" + txt_Telefone.Text + "')";
+                cadastro = "insert into secretaria values ('" + txt_Nome.Text + "', '" + txt_Email.Text + "', '" + PP3.App_Start.PP3ConexaoBD.Base64Encode(txt_Senha.Text) + "', '" + txt_Telefone.Text + "')";
             
 
             insertBD.ExecutaInsUpDel(cadastro);
