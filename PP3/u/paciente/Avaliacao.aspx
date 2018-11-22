@@ -10,7 +10,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
       
-    <asp:Panel ID="Panel1" runat="server">
+    <asp:Panel ID="Panel1" runat="server" Visible="False">
 <div class="col">
             <div class="box box-blue box-example-movie">
               <div class="box-header">Avalie a sua consulta com <asp:Label ID="lbl_medico" runat="server" Text="Label"></asp:Label></div>
@@ -45,11 +45,25 @@
             </div>
           </div>
         </asp:Panel>
-         <br/>                         </ContentTemplate>
-                    </asp:UpdatePanel>
+         <br/></ContentTemplate>
+      </asp:UpdatePanel>
+    <asp:Panel ID="Panel2" runat="server" Visible="False">
+         <div class="box box-blue box-example-movie">
+            <div class="box-header">Não há consultas a serem avaliadas!</div>
+              <div class="box-body">
+                  
+              </div>
+         </div>
+
+    </asp:Panel>
     <br/> 
     <br/> 
     <br/> 
+    <br/> 
+    <br/> 
+    <br/> 
+    <br/> 
+    
     <script src="../../js/jquery.min.js"></script>
 <script src="../../js/jquery.barrating.min.js"></script>
     <script>

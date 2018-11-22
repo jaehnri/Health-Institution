@@ -30,13 +30,14 @@ namespace PP3.u.paciente
                 if (achou == -1)
                 {
                     Panel1.Visible = false;
+                    Panel2.Visible = true;
                 }
                 else
                 {
-                IDataReader resultado = selec.RetornaDados(query);
-
-                lbl_medico.Text = resultado.GetString(1) + " no dia " + resultado.GetDateTime(2).ToString().Substring(0, 10) + "!";
+                    IDataReader resultado = selec.RetornaDados(query);
+                    lbl_medico.Text = resultado.GetString(1) + " no dia " + resultado.GetDateTime(2).ToString().Substring(0, 10) + "!";
                     Panel1.Visible = true;
+                    Panel2.Visible = false;
                     idConsulta_Avaliacao = resultado.GetInt32(0).ToString();
                     resultado.Close();
                 
